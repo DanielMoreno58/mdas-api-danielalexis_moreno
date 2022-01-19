@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Type\" />
+    <None Remove="Type\application\" />
+    <None Remove="Type\domain\" />
+    <None Remove="Type\infraestucture\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Type\" />
+    <Folder Include="Type\application\" />
+    <Folder Include="Type\domain\" />
+    <Folder Include="Type\infraestucture\" />
+  </ItemGroup>
+</Project>
