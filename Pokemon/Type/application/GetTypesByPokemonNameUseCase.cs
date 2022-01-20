@@ -1,18 +1,20 @@
 ﻿using System;
+using Pokemon.Type.domain;
 
 namespace Pokemon.Type.application
 {
     public class GetTypesByPokemonNameUseCase
     {
-        public GetTypesByPokemonNameUseCase(GetTypesByPokemonNameQuery query)
+        private readonly FindByPokemonName _findByPokemonName;
+
+        public GetTypesByPokemonNameUseCase(FindByPokemonName findByPokemonName)
         {
-            var repository = new TypeRepository();
-            var types = repository.FindByPokemonName(query.Name());
-            if (types.Count == 0)
-            {
-                throw new PokemonNotFoundException();
-            }
-            return types;
+            _findByPokemonName = findByPokemonName;
+        }
+
+        public List<Type> GetTypesByPokemonNameUseCase(GetTypesByPokemonNameQuery getTypesByPokemonNameQuery)
+        {
+            return _findByPokemonName.Execute(getTypesByPokemonNameQuery.Name);
         }
     }
 }
