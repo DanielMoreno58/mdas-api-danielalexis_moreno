@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Pokemon.Type.domain
 {
-    public class ITypeRepository
+    public interface ITypeRepository
     {
         List<Type> FindByPokemonName(PokemonName pokemonName);
     }
