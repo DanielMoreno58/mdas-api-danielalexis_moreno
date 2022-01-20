@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddTransient<FindByPokemonName>()
+builder.Services.AddTransient<FindByPokemonName>();
 
 var app = builder.Build();
 
