@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Pokemon.Type.domain;
 
 namespace Pokemon.Type.application
@@ -12,9 +13,9 @@ namespace Pokemon.Type.application
             _findByPokemonName = findByPokemonName;
         }
 
-        public List<Type> GetTypesByPokemonNameUseCase(GetTypesByPokemonNameQuery getTypesByPokemonNameQuery)
+        public List<Pokemon.Type.domain.Type> Execute(GetTypesByPokemonNameQuery getTypesByPokemonNameQuery)
         {
-            return _findByPokemonName.Execute(getTypesByPokemonNameQuery.Name);
+            return _findByPokemonName.Execute(getTypesByPokemonNameQuery.Name());
         }
     }
 }

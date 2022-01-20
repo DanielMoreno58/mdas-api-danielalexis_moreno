@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pokemon.Type.domain;
+using System;
 
 namespace Pokemon.Type.application
 {

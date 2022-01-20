@@ -1,13 +1,15 @@
+using System.Collections.Generic;
+
 namespace Pokemon.Type.domain {
 
     public class FindByPokemonName {
-        private readonly TypeRepository _typeRepository;
-        public FindByPokemonName(TypeRepository typeRepository) {
+        private readonly ITypeRepository _typeRepository;
+        public FindByPokemonName(ITypeRepository typeRepository) {
             _typeRepository = typeRepository;
         }
         
-        public List<Type> Execute(PokemonName name) {
-            var types = repository.FindByPokemonName(query.Name());
+        public List<Type> Execute(PokemonName pokemonName) {
+            var types = _typeRepository.FindByPokemonName(pokemonName);
             if (types.Count == 0)
             {
                 throw new PokemonNotFoundException();
