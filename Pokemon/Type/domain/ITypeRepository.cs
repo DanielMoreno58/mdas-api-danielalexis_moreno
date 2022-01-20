@@ -1,11 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace Pokemon.Type.domain
 {
     public class ITypeRepository
     {
-        public ITypeRepository()
-        {
-            List<Type> FindByPokemonName(PokemonName pokemonName);
-        }
+        List<Type> FindByPokemonName(PokemonName pokemonName);
     }
 }
