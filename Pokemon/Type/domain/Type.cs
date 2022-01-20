@@ -10,7 +10,7 @@ namespace Pokemon.Type.domain
             _name = name;
         }
 
-        public static Create(TypeName name) {
+        public static Type Create(TypeName name) {
             return new Type(name);
         }
 
