@@ -4,7 +4,7 @@ using Pokemon.Type.domain;
 
 namespace Pokemon.Type.infraestucture
 {
-    public class PokeApiRepository : ITypeRepository
+    public class PokeApiTypeRepository : ITypeRepository
     {
         public List<domain.Type> FindByPokemonName(PokemonName pokemonName)
         {
