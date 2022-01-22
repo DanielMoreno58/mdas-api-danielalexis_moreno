@@ -16,10 +16,13 @@ namespace PokemonApi.Controllers
             _getTypesByPokemonNameUseCase = getTypesByPokemonNameUseCase;
         }
 
-        // GET api/<TypeGetController>/5
         [HttpGet("{name}")]
-        public IActionResult GetByPokemonName(string name)
+        public IActionResult Get(string name)
         {
+            if (name == string.Empty)
+            {
+                return BadRequest("Names is required");
+            }
             try
             {
                 var getTypesByPokemonNameQuery = TypeGetAdapter.GetByPokemonNameToGetTypesByPokemonNameQuery(name);
@@ -29,7 +32,7 @@ namespace PokemonApi.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(e.Message);
+                return NotFound(e.Message);
             }
         }
 

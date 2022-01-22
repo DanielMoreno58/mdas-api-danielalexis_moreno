@@ -4,8 +4,18 @@ using Pokemon.Type.domain;
 using Pokemon.Type.infraestucture;
 
 var builder = WebApplication.CreateBuilder(args);
+var myAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 // Add services to the container.
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: myAllowSpecificOrigins, builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
 builder.Services.AddTransient<GetTypesByPokemonNameUseCase>();
 builder.Services.AddTransient<FindByPokemonName>();
 builder.Services.AddScoped<ITypeRepository, PokeApiTypeRepository>();
@@ -36,6 +46,7 @@ if (app.Environment.IsDevelopment())
         options.RoutePrefix = string.Empty;
     });
 }
+app.UseCors(myAllowSpecificOrigins);
 
 app.UseHttpsRedirection();
 
