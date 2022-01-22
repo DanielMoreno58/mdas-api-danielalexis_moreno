@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Pokemon.Type.domain;
 
 namespace Pokemon.Type.infraestucture

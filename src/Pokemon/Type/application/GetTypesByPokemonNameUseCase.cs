@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Pokemon.Type.domain;
 
 namespace Pokemon.Type.application
@@ -13,7 +12,7 @@ namespace Pokemon.Type.application
             _findByPokemonName = findByPokemonName;
         }
 
-        public List<Pokemon.Type.domain.Type> Execute(GetTypesByPokemonNameQuery getTypesByPokemonNameQuery)
+        public List<domain.Type> Execute(GetTypesByPokemonNameQuery getTypesByPokemonNameQuery)
         {
             return _findByPokemonName.Execute(getTypesByPokemonNameQuery.Name());
         }
