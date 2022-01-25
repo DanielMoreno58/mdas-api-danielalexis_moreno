@@ -2,8 +2,6 @@
 using Pokemon.Type.application;
 using Pokemon.Type.domain;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace PokemonApi.Controllers
 {
     [Route("api/v1/[controller]")]

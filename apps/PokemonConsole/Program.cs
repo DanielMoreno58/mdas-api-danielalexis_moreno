@@ -4,7 +4,7 @@ using Pokemon.Type.application;
 using Pokemon.Type.domain;
 using Pokemon.Type.infraestucture;
 
-namespace ePokemon
+namespace PokemonConsole
 {
     class Program
     {
