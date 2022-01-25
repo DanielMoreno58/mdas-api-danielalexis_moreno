@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Pokemon.Type.domain;
 using Pokemon.Type.infraestucture.HttpClients.PokeApi;
 
 namespace Pokemon.Type.infraestucture
 {
-    public class PokeApiRepository : ITypeRepository
+    public class PokeApiTypeRepository : ITypeRepository
     {
         private PokeApiHttpClient _pokeApiHttpClient;
         public PokeApiRepository(PokeApiHttpClient pokeApiHttpClient)

@@ -14,8 +14,6 @@ namespace Pokemon.Type.domain
             return new Type(name);
         }
 
-        public TypeName Name() {
-            return _name;
-        }
+        public TypeName Name => _name;
     }
 }
