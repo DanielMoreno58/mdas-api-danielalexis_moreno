@@ -20,7 +20,7 @@ namespace PokemonApi.Controllers
         {
             if (name == string.Empty)
             {
-                return BadRequest("Names is required");
+                return BadRequest("Name is required");
             }
             try
             {
