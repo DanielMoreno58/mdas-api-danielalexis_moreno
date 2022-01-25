@@ -2,8 +2,6 @@
 using Pokemon.Type.application;
 using Pokemon.Type.domain;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace PokemonApi.Controllers
 {
     [Route("api/v1/[controller]")]
@@ -37,15 +35,13 @@ namespace PokemonApi.Controllers
             {
                 return NotFound(e.Message);
             }
-            catch (PokemonApiNotResponseException e)
-            {
+            catch (PokemonApiNotResponseException e) {
                 return Conflict(e.Message);
             }
-            catch (Exception )
+            catch (Exception)
             {
-               return NotFound("Oops, something has gone wrong. Try again later.");
+                return NotFound("Oops, something has gone wrong. Try again later.");
             }
-  
         }
 
     }
