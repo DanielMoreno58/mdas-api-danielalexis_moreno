@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Pokemon.Type.application;
+using Pokemon.Type.domain;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -30,9 +31,16 @@ namespace PokemonApi.Controllers
 
                 return Ok(result);
             }
-            catch (Exception e)
+            catch (PokemonNotFoundException e)
             {
                 return NotFound(e.Message);
+            }
+            catch (PokemonApiNotResponseException e) {
+                return Conflict(e.Message);
+            }
+            catch (Exception)
+            {
+                return NotFound("Oops, something has gone wrong. Try again later.");
             }
         }
 
