@@ -22,10 +22,12 @@ namespace PokemonApi.Controllers
             {
                 return BadRequest("Name is required");
             }
+
             try
             {
                 var getTypesByPokemonNameQuery = TypeGetAdapter.GetByPokemonNameToGetTypesByPokemonNameQuery(name);
-                List<Pokemon.Type.domain.Type> result = _getTypesByPokemonNameUseCase.Execute(getTypesByPokemonNameQuery);
+                List<Pokemon.Type.domain.Type> result =
+                    _getTypesByPokemonNameUseCase.Execute(getTypesByPokemonNameQuery);
 
                 return Ok(result);
             }
