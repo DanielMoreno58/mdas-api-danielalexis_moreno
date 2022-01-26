@@ -2,6 +2,7 @@ using Microsoft.OpenApi.Models;
 using Pokemon.Type.application;
 using Pokemon.Type.domain;
 using Pokemon.Type.infraestucture;
+using Pokemon.Type.infraestucture.HttpClients.PokeApi;
 
 var builder = WebApplication.CreateBuilder(args);
 var myAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -18,6 +19,7 @@ builder.Services.AddCors(options =>
 });
 builder.Services.AddTransient<GetTypesByPokemonNameUseCase>();
 builder.Services.AddTransient<FindByPokemonName>();
+builder.Services.AddHttpClient<PokeApiHttpClient>();
 builder.Services.AddScoped<ITypeRepository, PokeApiTypeRepository>();
 
 builder.Services.AddControllers();

@@ -11,9 +11,7 @@
     <None Remove="Type\infraestucture\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Type\" />
     <Folder Include="Type\application\" />
     <Folder Include="Type\domain\" />
-    <Folder Include="Type\infraestucture\" />
   </ItemGroup>
 </Project>
