@@ -1,48 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Pokemon.Type.application;
 using Pokemon.Type.domain;
 using Pokemon.Type.infraestucture;
+using Pokemon.Type.infraestucture.HttpClients.PokeApi;
 
 namespace PokemonConsole
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            try {
-                string pokemonName = string.Empty;
-                do
+            using IHost host = Host.CreateDefaultBuilder(args)
+                .ConfigureLogging((logging) =>
                 {
-                    Console.WriteLine("Enter the name of the pokemon");
-                    pokemonName = Console.ReadLine();
-                    if (pokemonName == string.Empty)
-                    {
-                        Console.WriteLine("Name is required");
-                    }
-                } while (pokemonName == string.Empty);
-                GetTypesByPokemonNameUseCase useCase = new GetTypesByPokemonNameUseCase(new FindByPokemonName(new PokeApiTypeRepository()));
-                List<Pokemon.Type.domain.Type> result = useCase.Execute(new GetTypesByPokemonNameQuery(pokemonName));
+                    logging.ClearProviders();
+                })
+                .ConfigureAppConfiguration(app =>
+                {
+                    app.AddJsonFile("appsettings.json");
+                })
+                .ConfigureServices((_, services) => {
+                    services.AddTransient<ITypeRepository, PokeApiTypeRepository>();
+                    services.AddTransient<GetTypesByPokemonNameUseCase>();
+                    services.AddTransient<FindByPokemonName>();
+                    services.AddHttpClient<PokeApiHttpClient>();
+                    services.AddTransient<ConsoleApp>();
+                })
+                .Build();
 
-                string resultString = "";
-                foreach (var type in result)
-                {
-                    resultString += type.Name.Value + (type.Name.Value == result[result.Count - 1].Name.Value ? "" : ", ");
-                }
-                Console.WriteLine(resultString);
-                return;
-            }
-            catch (PokemonNotFoundException e)
+            using (var serviceScope = host.Services.CreateScope())
             {
-                Console.WriteLine(e.Message);
-                return;
-            } 
-            catch (PokemonApiNotResponseException e) {
-                Console.WriteLine(e.Message);
-                return;
-            }
-            catch {
-                Console.WriteLine("Oops, something has gone wrong. Try again later.");
+                var services = serviceScope.ServiceProvider;
+
+                try
+                {
+                    ConsoleApp consoleApp = services.GetRequiredService<ConsoleApp>();
+                    await consoleApp.RunAsync();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error Occured");
+                    Console.WriteLine(ex);
+                }
             }
         }
     }
