@@ -1,17 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.810.16
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32002.185
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ePokemon", "apps\ePokemon\ePokemon.csproj", "{F2952F99-85EA-4646-BE1C-F7BD80D0AEB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonConsole", "apps\PokemonConsole\PokemonConsole.csproj", "{F2952F99-85EA-4646-BE1C-F7BD80D0AEB9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8A894576-24F2-4183-BEBC-39F8744FA7D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon", "src\Pokemon\Pokemon.csproj", "{CB86BDDA-C930-4B8E-9C0B-73D3717B787A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pokemon", "src\Pokemon\Pokemon.csproj", "{CB86BDDA-C930-4B8E-9C0B-73D3717B787A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apps", "apps", "{E36BE442-0AB1-4D9F-A127-F5C40DF9A69C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonApi", "apps\PokemonApi\PokemonApi.csproj", "{153ED927-5F52-4E9A-9ECD-BAB3538E4F30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonApi", "apps\PokemonApi\PokemonApi.csproj", "{153ED927-5F52-4E9A-9ECD-BAB3538E4F30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,11 +35,12 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {30CF126F-3A0E-4B7A-889B-4125CA8CFB17}
-	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{F2952F99-85EA-4646-BE1C-F7BD80D0AEB9} = {E36BE442-0AB1-4D9F-A127-F5C40DF9A69C}
 		{CB86BDDA-C930-4B8E-9C0B-73D3717B787A} = {8A894576-24F2-4183-BEBC-39F8744FA7D5}
 		{153ED927-5F52-4E9A-9ECD-BAB3538E4F30} = {E36BE442-0AB1-4D9F-A127-F5C40DF9A69C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30CF126F-3A0E-4B7A-889B-4125CA8CFB17}
 	EndGlobalSection
 EndGlobal

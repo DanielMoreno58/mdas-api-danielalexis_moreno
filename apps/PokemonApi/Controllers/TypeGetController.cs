@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Pokemon.Type.application;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using Pokemon.Type.domain;
 
 namespace PokemonApi.Controllers
 {
@@ -21,18 +20,27 @@ namespace PokemonApi.Controllers
         {
             if (name == string.Empty)
             {
-                return BadRequest("Names is required");
+                return BadRequest("Name is required");
             }
+
             try
             {
                 var getTypesByPokemonNameQuery = TypeGetAdapter.GetByPokemonNameToGetTypesByPokemonNameQuery(name);
-                List<Pokemon.Type.domain.Type> result = _getTypesByPokemonNameUseCase.Execute(getTypesByPokemonNameQuery);
+                List<Pokemon.Type.domain.Type> result =
+                    _getTypesByPokemonNameUseCase.Execute(getTypesByPokemonNameQuery);
 
                 return Ok(result);
             }
-            catch (Exception e)
+            catch (PokemonNotFoundException e)
             {
                 return NotFound(e.Message);
+            }
+            catch (PokemonApiNotResponseException e) {
+                return Conflict(e.Message);
+            }
+            catch (Exception)
+            {
+                return NotFound("Oops, something has gone wrong. Try again later.");
             }
         }
 
