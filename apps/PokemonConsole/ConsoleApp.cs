@@ -11,7 +11,7 @@ namespace PokemonConsole
         private readonly GetTypesByPokemonNameUseCase _getTypesByPokemonNameUseCase;
         public ConsoleApp(GetTypesByPokemonNameUseCase getTypesByPokemonNameUseCasey)
         {
-            _getTypesByPokemonNameUseCase= getTypesByPokemonNameUseCasey;
+            _getTypesByPokemonNameUseCase = getTypesByPokemonNameUseCasey;
         }
         public async Task RunAsync()
         {
@@ -27,7 +27,7 @@ namespace PokemonConsole
                         Console.WriteLine("Name is required");
                     }
                 } while (pokemonName == string.Empty);
-                List<Pokemon.Type.domain.Type> result = _getTypesByPokemonNameUseCase.Execute(new GetTypesByPokemonNameQuery(pokemonName));                
+                List<Pokemon.Type.domain.Type> result = _getTypesByPokemonNameUseCase.Execute(new GetTypesByPokemonNameQuery(pokemonName));
 
                 string resultString = "";
                 foreach (var type in result)
@@ -37,18 +37,20 @@ namespace PokemonConsole
                 Console.WriteLine(resultString);
                 return;
             }
-            catch (PokemonNotFoundException e)
+            catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-                return;
-            }
-            catch (PokemonApiNotResponseException e)
-            {
-                Console.WriteLine(e.Message);
-                return;
-            }
-            catch
-            {
+                if (e.InnerException.GetType().Equals(typeof(PokemonNotFoundException)))
+                {
+                    Console.WriteLine(e.Message);
+                    return;
+                }
+
+                if (e.InnerException.GetType().Equals(typeof(PokemonApiNotResponseException)))
+                {
+                    Console.WriteLine(e.Message);
+                    return;
+                }
+
                 Console.WriteLine("Oops, something has gone wrong. Try again later.");
             }
 

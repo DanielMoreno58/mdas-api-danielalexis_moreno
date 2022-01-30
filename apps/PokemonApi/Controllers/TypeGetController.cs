@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
 using Pokemon.Type.application;
 using Pokemon.Type.domain;
 
@@ -31,15 +32,14 @@ namespace PokemonApi.Controllers
 
                 return Ok(result);
             }
-            catch (PokemonNotFoundException e)
+            catch (Exception e)
             {
-                return NotFound(e.Message);
-            }
-            catch (PokemonApiNotResponseException e) {
-                return Conflict(e.Message);
-            }
-            catch (Exception)
-            {
+                if (e.InnerException.GetType().Equals(typeof(PokemonNotFoundException)))
+                    return NotFound(e.Message);
+
+                if (e.InnerException.GetType().Equals(typeof(PokemonApiNotResponseException)))
+                    return Conflict(e.Message);
+
                 return NotFound("Oops, something has gone wrong. Try again later.");
             }
         }
