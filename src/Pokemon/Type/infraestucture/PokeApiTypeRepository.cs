@@ -15,13 +15,11 @@ namespace Pokemon.Type.infraestucture
         }
         public List<domain.Type> FindByPokemonName(PokemonName pokemonName)
         {
-            List<domain.Type> types = HttpAdapter.PokeApiTypeDtoListToTypesList(_pokeApiHttpClient.FindByPokemonNameAsync(pokemonName.Value).Result);
+            var pokemon = _pokeApiHttpClient.FindByPokemonNameAsync(pokemonName.Value).Result;
+
+            List<domain.Type> types = HttpAdapter.PokeApiTypeDtoListToTypesList(pokemon);
             return types;
         }
-
-        public List<domain.Type> GetTypes()
-        {
-            return HttpAdapter.PokeApiTypeDtoListToTypesList(_pokeApiHttpClient.GetTypesAsync().Result);
-        }        
+    
     }
 }

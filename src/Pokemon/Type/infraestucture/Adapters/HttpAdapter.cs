@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Pokemon.Type.infraestucture.Adapters
 {
-    public static class HttpAdapter
+    internal static class HttpAdapter
     {
-        public static domain.Type PokeApiTypeDtoToType(PokeApiTypeDto pokeApiTypeDto)
+        private static domain.Type PokeApiTypeDtoToType(PokeApiTypeDto pokeApiTypeDto)
         {
             domain.Type type = domain.Type.Create(new TypeName(pokeApiTypeDto.Name));
             return type;
@@ -22,21 +22,22 @@ namespace Pokemon.Type.infraestucture.Adapters
             return types;
         }
 
-        public static PokeApiTypeDto PokeApiTypeWrapDtoToPokeApiTypeDto(PokeApiTypeWrapDto pokeApiTypeWrapDto)
+        
+        public static List<PokeApiTypeDto> PokeApiTypesDtoListToPokeApiTypeDtoList(List<PokeApiTypesDto> pokeApiTypeWrapDtos)
+        {
+            List<PokeApiTypeDto> types = new List<PokeApiTypeDto>();
+            pokeApiTypeWrapDtos.ForEach(pokeApiTypeWrapDto => types.Add(PokeApiTypesDtoToPokeApiTypeDto(pokeApiTypeWrapDto)));
+            return types;
+        }
+
+        private static PokeApiTypeDto PokeApiTypesDtoToPokeApiTypeDto(PokeApiTypesDto pokeApiTypesDto)
         {
             PokeApiTypeDto pokeApiTypeDto = new PokeApiTypeDto
             {
-                Name = pokeApiTypeWrapDto.Type.Name,
-                Url = pokeApiTypeWrapDto.Type.Url
+                Name = pokeApiTypesDto.Type.Name,
+                Url = pokeApiTypesDto.Type.Url
             };
             return pokeApiTypeDto;
-        }
-
-        public static List<PokeApiTypeDto> PokeApiTypeWrapDtoListToPokeApiTypeDtoList(List<PokeApiTypeWrapDto> pokeApiTypeWrapDtos)
-        {
-            List<PokeApiTypeDto> types = new List<PokeApiTypeDto>();
-            pokeApiTypeWrapDtos.ForEach(pokeApiTypeWrapDto => types.Add(PokeApiTypeWrapDtoToPokeApiTypeDto(pokeApiTypeWrapDto)));
-            return types;
         }
 
     }

@@ -7,6 +7,5 @@ namespace Pokemon.Type.domain
     public interface ITypeRepository
     {
         public List<Type> FindByPokemonName(PokemonName pokemonName);
-        public List<Type> GetTypes();        
     }
 } 

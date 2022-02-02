@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Pokemon.Type.infraestucture.HttpClients.PokeApi
 {
-    public class PokeApiDto
+    internal class PokeApiPokemonDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Url { get; set; }
-        public List<PokeApiTypeWrapDto> Types { get; set; }
+        public List<PokeApiTypesDto> Types { get; set; }
     }
 }
