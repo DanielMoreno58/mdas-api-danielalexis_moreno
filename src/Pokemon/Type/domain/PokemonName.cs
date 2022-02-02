@@ -1,5 +1,3 @@
-using System;
-
 namespace Pokemon.Type.domain
 {
     public readonly struct PokemonName

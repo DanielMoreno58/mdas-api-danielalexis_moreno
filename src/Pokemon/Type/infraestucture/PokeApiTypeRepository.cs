@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using Pokemon.Type.domain;
 using Pokemon.Type.infraestucture.Adapters;
 using Pokemon.Type.infraestucture.HttpClients.PokeApi;

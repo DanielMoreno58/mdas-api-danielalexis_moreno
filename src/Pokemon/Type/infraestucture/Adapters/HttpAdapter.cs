@@ -1,10 +1,6 @@
 ﻿using Pokemon.Type.domain;
 using Pokemon.Type.infraestucture.HttpClients.PokeApi;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pokemon.Type.infraestucture.Adapters
 {
@@ -15,6 +11,7 @@ namespace Pokemon.Type.infraestucture.Adapters
             domain.Type type = domain.Type.Create(new TypeName(pokeApiTypeDto.Name));
             return type;
         }
+
         public static List<domain.Type> PokeApiTypeDtoListToTypesList(List<PokeApiTypeDto> pokeApiTypeDtos)
         {
             List<domain.Type> types = new List<domain.Type>();
@@ -22,7 +19,6 @@ namespace Pokemon.Type.infraestucture.Adapters
             return types;
         }
 
-        
         public static List<PokeApiTypeDto> PokeApiTypesDtoListToPokeApiTypeDtoList(List<PokeApiTypesDto> pokeApiTypeWrapDtos)
         {
             List<PokeApiTypeDto> types = new List<PokeApiTypeDto>();
@@ -39,6 +35,5 @@ namespace Pokemon.Type.infraestucture.Adapters
             };
             return pokeApiTypeDto;
         }
-
     }
 }
