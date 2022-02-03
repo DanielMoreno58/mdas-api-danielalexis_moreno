@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Users.User.domain
+﻿namespace Users.User.domain
 {
-    internal class UserName
+    public readonly struct UserName
     {
+        public string Value { get; } 
+        
+        public UserName(string name)
+        {
+            Value = name;
+        }
     }
 }

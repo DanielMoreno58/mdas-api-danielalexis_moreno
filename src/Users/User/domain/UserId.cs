@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Users.User.domain
+﻿namespace Users.User.domain
 {
-    internal class UserId
+    public readonly struct UserId
     {
+        public Guid Value { get; } 
+        
+        public UserId(Guid id)
+        {
+            Value = id;
+        }
     }
 }
