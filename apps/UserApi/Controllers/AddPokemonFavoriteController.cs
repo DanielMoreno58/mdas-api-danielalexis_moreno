@@ -4,7 +4,7 @@ namespace UserApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class UserCreateController : ControllerBase
+    public class AddPokemonFavoriteController : ControllerBase
     {
 
     }
