@@ -1,51 +1,47 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
-
-#TODO FUSIONAR LOS DOS PROYECTOS SEGUN LAS PLANTILLAS DE CADA UNO
-
-FROM mcr.microsoft.com/dotnet/runtime:6.0 AS base
+# Console
+FROM mcr.microsoft.com/dotnet/runtime:6.0 AS baseconsole
 WORKDIR /app
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["apps/PokemonConsole/PokemonConsole.csproj", "apps/PokemonConsole/"]
-COPY ["src/Pokemon/Pokemon.csproj", "src/Pokemon/"]
-RUN dotnet restore "apps/PokemonConsole/PokemonConsole.csproj"
-COPY . .
-WORKDIR "/src/apps/PokemonConsole"
-RUN dotnet build "PokemonConsole.csproj" -c Release -o /app/build
-
-FROM build AS publish
-RUN dotnet publish "PokemonConsole.csproj" -c Release -o /app/publish
-
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "PokemonConsole.dll"]
-
-
-
-
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+# Api
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS baseapp
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
+# Build and restore Console y Api
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["apps/PokemonApi/PokemonApi.csproj", "apps/PokemonApi/"]
-COPY ["src/Pokemon/Pokemon.csproj", "src/Pokemon/"]
-RUN dotnet restore "apps/PokemonApi/PokemonApi.csproj"
+COPY ["./../apps/PokemonConsole/PokemonConsole.csproj", "apps/PokemonConsole/"]
+COPY ["./../apps/PokemonApi/PokemonApi.csproj", "apps/PokemonApi/"]
+COPY ["./../src/Pokemon/Pokemon.csproj", "src/Pokemon/"]
+RUN dotnet restore "./../apps/PokemonConsole/PokemonConsole.csproj"
+RUN dotnet restore "./../apps/PokemonApi/PokemonApi.csproj"
 COPY . .
+
+# Compile Console
+WORKDIR "/src/apps/PokemonConsole"
+RUN dotnet build "PokemonConsole.csproj" -c Release -o /app/build
+
+# Publish Console
+FROM build AS publish
+RUN dotnet publish "PokemonConsole.csproj" -c Release -o /app/publish
+
+# Run Console
+FROM baseconsole AS finalconsole
+WORKDIR /app
+COPY --from=publish /app/publish .
+RUN ["dotnet", "PokemonConsole.dll"]
+
+# Compile Api
 WORKDIR "/src/apps/PokemonApi"
 RUN dotnet build "PokemonApi.csproj" -c Release -o /app/build
 
+# Publish Api
 FROM build AS publish
 RUN dotnet publish "PokemonApi.csproj" -c Release -o /app/publish
 
-FROM base AS final
+# Run Api
+FROM baseapp AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "PokemonApi.dll"]
