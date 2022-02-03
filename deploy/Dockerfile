@@ -1,5 +1,8 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
+
+#TODO FUSIONAR LOS DOS PROYECTOS SEGUN LAS PLANTILLAS DE CADA UNO
+
 FROM mcr.microsoft.com/dotnet/runtime:6.0 AS base
 WORKDIR /app
 
@@ -19,3 +22,30 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "PokemonConsole.dll"]
+
+
+
+
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+WORKDIR /app
+EXPOSE 80
+EXPOSE 443
+
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /src
+COPY ["apps/PokemonApi/PokemonApi.csproj", "apps/PokemonApi/"]
+COPY ["src/Pokemon/Pokemon.csproj", "src/Pokemon/"]
+RUN dotnet restore "apps/PokemonApi/PokemonApi.csproj"
+COPY . .
+WORKDIR "/src/apps/PokemonApi"
+RUN dotnet build "PokemonApi.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "PokemonApi.csproj" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "PokemonApi.dll"]
