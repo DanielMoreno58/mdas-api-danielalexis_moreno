@@ -19,8 +19,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{E254D1AE-8FEA-4ECC-A6CF-DCFFCFD94D0B}"
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
-		deploy\Dockerfile_api = deploy\Dockerfile_api
-		deploy\Dockerfile_console = deploy\Dockerfile_console
+		deploy\Dockerfile = deploy\Dockerfile
 		ReadME.txt = ReadME.txt
 	EndProjectSection
 EndProject

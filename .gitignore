@@ -403,3 +403,5 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+/docker-compose_2_containers.yml
+/deploy/2 contenedores
