@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Users.User.domain
+﻿namespace Users.User.domain
 {
-    internal class IUserRepository
+    public interface IUserRepository
     {
+        void Save(User user);
+        User Find(UserId userId);
     }
 }

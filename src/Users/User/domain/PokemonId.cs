@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Users.User.domain
+﻿namespace Users.User.domain
 {
-    internal class PokemonId
+    public readonly struct PokemonId
     {
+        public Guid Value { get; } 
+        
+        public PokemonId(Guid id)
+        {
+            Value = id;
+        }
     }
 }

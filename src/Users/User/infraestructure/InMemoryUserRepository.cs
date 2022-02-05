@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Users.User.domain;
 
 namespace Users.User.infraestructure
 {
-    internal class InMemoryUserRepository
+    public class InMemoryUserRepository : IUserRepository
     {
+        public void Save(domain.User user) {
+            // Save user to database
+        }
+        public domain.User Find(UserId userId) {
+            // Find user in database
+            throw new UserDoesNotExistException();
+        }
     }
 }

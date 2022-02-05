@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Users.User.domain
+﻿namespace Users.User.domain
 {
-    internal class UserCreator
+    public class UserCreator
     {
+        private readonly IUserRepository _userRepository;
+
+        public UserCreator(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
+
+        public void Create(UserId userId, UserName userName)
+        {
+            var user = User.Create(userId, userName);
+            _userRepository.Save(user);
+        }
     }
 }
