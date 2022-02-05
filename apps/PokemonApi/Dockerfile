@@ -9,7 +9,6 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["apps/PokemonApi/PokemonApi.csproj", "apps/PokemonApi/"]
 COPY ["src/Pokemon/Pokemon.csproj", "src/Pokemon/"]
-
 RUN dotnet restore "apps/PokemonApi/PokemonApi.csproj"
 COPY . .
 WORKDIR "/src/apps/PokemonApi"
