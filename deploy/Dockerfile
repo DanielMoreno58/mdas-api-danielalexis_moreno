@@ -9,10 +9,10 @@ COPY ["Pokemon.sln", "./"]
 COPY ["apps/PokemonApi/PokemonApi.csproj", "apps/PokemonApi/"]
 COPY ["src/Pokemon/Pokemon.csproj", "src/Pokemon/"]
 COPY ["apps/PokemonConsole/PokemonConsole.csproj", "apps/PokemonConsole/"]
-COPY ["apps/UserApi/UserApi.csproj", "apps/UserApi/"]
-COPY ["src/Users/Users.csproj", "src/Users/"]
 
-RUN dotnet restore 
+RUN dotnet restore "src/Pokemon/Pokemon.csproj"
+RUN dotnet restore "apps/PokemonApi/PokemonApi.csproj"
+RUN dotnet restore "apps/PokemonConsole/PokemonConsole.csproj"
 COPY . .
 
 WORKDIR "/src/apps/PokemonApi"
