@@ -1,14 +1,28 @@
 version: '3.6'
 
 services:
- pokemon:
+
+ pokemon_api:
     image: pokemonapi
+    container_name: pokemonapi
     build:
       context: .
-      dockerfile: deploy/Dockerfile
+      dockerfile: deploy/Dockerfile_api
     ports:
       - "3080:80" 
       - "3443:443"
+    networks:
+      - pokemonnet
+
+ pokemon_console:
+    image: pokemonconsole
+    container_name: pokemonconsole
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile_console
+    ports:
+      - "4080:80" 
+      - "4443:443"
     networks:
       - pokemonnet
 
