@@ -1,6 +1,6 @@
 # Project ePokemon | Group 2 
 
-This project was created by **Group 2** for the course Software Design 2 with the programming lenguage: **C#**
+This project was created by **Group 2** for the course Software Design 2 with the programming language: **C#**
 
 ---
 
@@ -48,7 +48,9 @@ This project was created by **Group 2** for the course Software Design 2 with th
 
     > Do the following request through postman or your favorite browser: <br><br>
     > `http://localhost:3080/api/v1/TypeGet/charizard` <br><br>
-    > Change the name `charizard` for any other pokemon you can imagine, and if not exists the app will throw an exception that indicates that the pokemon does not exist!
+    > Exception Scenarios: <br>
+    > 1. Change the name `charizard` for any other pokemon you can imagine, and if not exists the app will throw an exception (***PokemonNotFoundException***) that indicates that the pokemon does not exist!
+    > 2. Test the Api without conection to internet to get the next controlled excepetion(***PokemonApiNotResponseException***) that indicates that the api is not responding!
 
      **2.2.** Console
 
