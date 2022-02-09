@@ -4,13 +4,13 @@
     {
         private readonly UserId _userId;
         private readonly UserName _userName;
-        private readonly List<PokemonId> _pokemonFavorites;
+        private readonly FavoritesCollection _pokemonFavorites;
 
         private User(UserId userId, UserName userName)
         {
             _userId = userId;
             _userName = userName;
-            _pokemonFavorites = new List<PokemonId>();
+            _pokemonFavorites = new FavoritesCollection();
         }
 
         public static User Create(UserId userId, UserName userName)
@@ -20,13 +20,6 @@
 
         public UserId UserId => _userId;
         public UserName UserName => _userName;
-        public IReadOnlyCollection<PokemonId> PokemonFavorites => _pokemonFavorites;
-        public void AddPokemonFavorite(PokemonId pokemonId)
-        {
-            if (_pokemonFavorites.Contains(pokemonId)) {
-                throw new PokemonFavoriteAlreadyExistException();
-            }
-            _pokemonFavorites.Add(pokemonId);
-        }
+        public FavoritesCollection PokemonFavorites => _pokemonFavorites;
     }
 }

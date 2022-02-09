@@ -1,12 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Users.User.domain;
 
 namespace Users.User.application
 {
-    internal class CreateUserUseCase
+    public class CreateUserUseCase
     {
+        private readonly UserCreator _userCreator;
+        private readonly UserExistById _userExistById;
+
+        public CreateUserUseCase(UserCreator userCreator, UserExistById userExistById)
+        {
+            _userCreator = userCreator;
+            _userExistById = userExistById;
+        }
+
+        public void Execute(UserId userId, UserName userName)
+        {
+            guardAgainstUserAlreadyExists(userId);
+            _userCreator.Create(userId, userName);
+        }
+
+        private void guardAgainstUserAlreadyExists(UserId userId)
+        {
+            if (_userExistById.Execute(userId))
+            {
+                throw new UserAlreadyExistsException();
+            }
+        }
     }
 }

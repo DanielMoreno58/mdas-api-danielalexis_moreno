@@ -4,5 +4,6 @@
     {
         void Save(User user);
         User Find(UserId userId);
+        bool Exists(UserId userId);
     }
 }
