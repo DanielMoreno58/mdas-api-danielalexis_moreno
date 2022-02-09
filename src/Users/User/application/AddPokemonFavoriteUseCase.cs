@@ -5,16 +5,19 @@ namespace Users.User.application
     internal class AddPokemonFavoriteUseCase
     {
         private readonly UserFindById _userFindById;
+        private readonly UserAddPokemonFavorite _userAddPokemonFavorite;
 
-        public AddPokemonFavoriteUseCase(UserFindById userFindById)
+        public AddPokemonFavoriteUseCase(UserFindById userFindById, UserAddPokemonFavorite userAddPokemonFavorite)
         {
             _userFindById = userFindById;
+            _userAddPokemonFavorite = userAddPokemonFavorite;
         }
 
         public void Execute(UserId userId, PokemonId pokemonId)
         {
             var user = _userFindById.Execute(userId);
-            user.PokemonFavorites.AddPokemonFavorite(pokemonId);
+
+            _userAddPokemonFavorite.Execute(user,pokemonId);
         }
     }
 }
