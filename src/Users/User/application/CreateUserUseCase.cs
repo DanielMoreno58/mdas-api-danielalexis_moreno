@@ -13,13 +13,16 @@ namespace Users.User.application
             _userExistById = userExistById;
         }
 
-        public void Execute(UserId userId, UserName userName)
+        public void Execute(Guid id, string name)
         {
-            guardAgainstUserAlreadyExists(userId);
+            UserId userId = new UserId(id);
+            UserName userName = new UserName(name);
+
+            GuardAgainstUserAlreadyExists(userId);
             _userCreator.Create(userId, userName);
         }
 
-        private void guardAgainstUserAlreadyExists(UserId userId)
+        private void GuardAgainstUserAlreadyExists(UserId userId)
         {
             if (_userExistById.Execute(userId))
             {
