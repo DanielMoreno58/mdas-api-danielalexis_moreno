@@ -9,7 +9,7 @@
             _userRepository = userRepository;
         }
 
-        public void Create(UserId userId, UserName userName)
+        public void Execute(UserId userId, UserName userName)
         {
             var user = User.Create(userId, userName);
             _userRepository.Save(user);

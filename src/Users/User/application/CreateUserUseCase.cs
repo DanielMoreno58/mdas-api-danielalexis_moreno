@@ -19,7 +19,7 @@ namespace Users.User.application
             UserName userName = new UserName(name);
 
             GuardAgainstUserAlreadyExists(userId);
-            _userCreator.Create(userId, userName);
+            _userCreator.Execute(userId, userName);
         }
 
         private void GuardAgainstUserAlreadyExists(UserId userId)
