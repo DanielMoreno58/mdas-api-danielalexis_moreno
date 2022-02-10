@@ -2,7 +2,7 @@
 
 namespace Users.User.application
 {
-    internal class AddPokemonFavoriteUseCase
+    public class AddPokemonFavoriteUseCase
     {
         private readonly UserFindById _userFindById;
         private readonly UserAddPokemonFavorite _userAddPokemonFavorite;
