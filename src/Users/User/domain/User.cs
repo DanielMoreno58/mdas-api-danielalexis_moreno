@@ -1,6 +1,6 @@
 ﻿namespace Users.User.domain
 {
-    public sealed class User
+    public class User
     {
         private readonly UserId _userId;
         private readonly UserName _userName;
@@ -13,13 +13,13 @@
             _pokemonFavorites = new FavoritesCollection();
         }
 
-        public static User Create(UserId userId, UserName userName)
+        public static User Create(UserId id, UserName userName)
         {
-            return new User(userId, userName);
+            return new User(id, userName);
         }
 
-        public UserId UserId => _userId;
+        public UserId Id => _userId;
         public UserName UserName => _userName;
-        public FavoritesCollection PokemonFavorites => _pokemonFavorites;
+        public virtual FavoritesCollection PokemonFavorites => _pokemonFavorites;
     }
 }
