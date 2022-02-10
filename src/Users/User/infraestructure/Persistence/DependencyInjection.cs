@@ -30,20 +30,6 @@ public static class DependencyInjection
         return services;
     }
 
-    public static IApplicationBuilder UseSeeder(this IApplicationBuilder builder)
-    {
-        var app = (IHost)builder;
-        var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
-
-        using (var scope = scopedFactory.CreateScope())
-        {
-            var dataSeeder = scope.ServiceProvider.GetService<DataSeeder>();
-            dataSeeder.Seed();
-        }
-
-        return builder.UseMiddleware<SeederMiddleware>();
-    }
-
     private class SeederMiddleware
     {
         private readonly RequestDelegate _next;

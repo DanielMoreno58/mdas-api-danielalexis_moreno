@@ -4,10 +4,6 @@
     {
         public Guid Value { get; }
 
-        public UserId() : this(Guid.NewGuid())
-        {
-
-        }
         public UserId(Guid id)
         {
             Value = id;
@@ -18,8 +14,8 @@
             Value = new Guid(id);
         }
 
-        public override bool Equals(object? obj) =>
-        obj is FavoriteId o && this.Equals(o);
+        //public override bool Equals(object? obj) =>
+        //obj is FavoriteId o && this.Equals(o);
 
         public bool Equals(UserId other) => this.Value == other.Value;
 

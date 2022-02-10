@@ -9,9 +9,9 @@
             _userRepository = userRepository;
         }
 
-        public void Execute(User user, PokemonId pokemonId)
+        public void Execute(User user, PokemonFavorite pokemonFavorite)
         {
-            user.PokemonFavorites.AddPokemonFavorite(pokemonId);
+            user.PokemonFavorites.AddPokemonFavorite(pokemonFavorite);
 
             _userRepository.Save(user);
         }

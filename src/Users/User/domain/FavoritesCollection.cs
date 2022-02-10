@@ -1,26 +1,22 @@
 namespace Users.User.domain
 {
-    public class FavoritesCollection: List<Favorite> {        
-        public void AddPokemonFavorite(Favorite favorite) {
-            guardAgainstPokemonFavoriteAlreadyExist(favorite);
+    public class FavoritesCollection: List<PokemonFavorite> {        
+        public void AddPokemonFavorite(PokemonFavorite favorite) {
+
+            GuardAgainstPokemonFavoriteAlreadyExist(favorite);
+            
             base.Add(favorite);
         }
 
-        private void guardAgainstPokemonFavoriteAlreadyExist(Favorite favorite) {
-            if (this.Where(p => p.PokemonId == favorite.PokemonId && p.UserId == favorite.UserId).Any())
-            {
+        private void GuardAgainstPokemonFavoriteAlreadyExist(PokemonFavorite favorite) {
+            if (this.Any(p => p.PokemonId == favorite.PokemonId))
                 throw new PokemonFavoriteAlreadyExistException();
-            }
         }
 
-        public new void Add(Favorite favorite)
+        private new void Add(PokemonFavorite favorite)
         {
             this.AddPokemonFavorite(favorite);
         }
 
-        public new void AddRange(List<Favorite> favorites)
-        {
-            base.AddRange(favorites);
-        }
     }
 }

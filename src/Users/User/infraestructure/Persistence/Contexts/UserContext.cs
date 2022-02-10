@@ -13,7 +13,7 @@ namespace Users.User.infraestructure.Persistence.Contexts
         }
 
         public virtual DbSet<domain.User> Users { get; set; }
-        public virtual DbSet<domain.Favorite> Favorites { get; set; }
+        public virtual DbSet<domain.PokemonFavorite> Favorites { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -13,11 +13,11 @@ namespace Users.User.application
             _userAddPokemonFavorite = userAddPokemonFavorite;
         }
 
-        public void Execute(UserId userId, PokemonId pokemonId)
+        public void Execute(UserId userId, PokemonFavorite pokemonFavorite)
         {
             var user = _userFindById.Execute(userId);
 
-            _userAddPokemonFavorite.Execute(user,pokemonId);
+            _userAddPokemonFavorite.Execute(user, pokemonFavorite);
         }
     }
 }
