@@ -5,12 +5,10 @@ namespace Users.User.application
     public class CreateUserUseCase
     {
         private readonly UserCreator _userCreator;
-        private readonly UserExistById _userExistById;
 
-        public CreateUserUseCase(UserCreator userCreator, UserExistById userExistById)
+        public CreateUserUseCase(UserCreator userCreator)
         {
             _userCreator = userCreator;
-            _userExistById = userExistById;
         }
 
         public void Execute(Guid id, string name)
@@ -18,16 +16,8 @@ namespace Users.User.application
             UserId userId = new UserId(id);
             UserName userName = new UserName(name);
 
-            GuardAgainstUserAlreadyExists(userId);
             _userCreator.Execute(userId, userName);
         }
 
-        private void GuardAgainstUserAlreadyExists(UserId userId)
-        {
-            if (_userExistById.Execute(userId))
-            {
-                throw new UserAlreadyExistsException();
-            }
-        }
     }
 }
