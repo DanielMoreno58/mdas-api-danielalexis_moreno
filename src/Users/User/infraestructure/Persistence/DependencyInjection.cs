@@ -19,8 +19,7 @@ public static class DependencyInjection
     {
         var options = new PersistenceInMemoryOptions();
         configureOptions(options);
-
-        //services.AddTransient<DataSeeder>();
+                
         services.AddScoped<IUserRepository, EFUserRepository>();
         
         services.AddDbContext<UserContext>(opt =>
