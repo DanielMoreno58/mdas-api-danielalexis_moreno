@@ -1,6 +1,6 @@
 namespace Users.User.domain
 {
-    public class FavoritesCollection: List<PokemonFavorite> {        
+    public class PokemonFavoritesCollection: List<PokemonFavorite> {        
         public void AddPokemonFavorite(PokemonFavorite favorite) {
 
             GuardAgainstPokemonFavoriteAlreadyExist(favorite);
