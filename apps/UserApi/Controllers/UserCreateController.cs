@@ -19,11 +19,12 @@ namespace UserApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateUser(Guid id, string name)
+        public IActionResult CreateUser([FromBody]string name)
         {
             try
             {
-               _createUserUseCase.Execute(id, name);
+                Guid id = Guid.NewGuid();
+               _createUserUseCase.Execute(id,name);
                 return Ok();
             }
             catch(Exception e)

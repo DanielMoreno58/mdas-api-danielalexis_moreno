@@ -20,6 +20,6 @@
 
         public UserId Id => _userId;
         public UserName UserName => _userName;
-        public virtual FavoritesCollection PokemonFavorites => _pokemonFavorites;
+        public FavoritesCollection PokemonFavorites => _pokemonFavorites;
     }
 }

@@ -1,28 +1,35 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq;
 
 namespace Users.User.infraestructure.Persistence.Contexts
 {
-    public partial class UserContext : DbContext
-    {
+    public partial class UserContext     {
+
         public UserContext()
         {
-        }
-        public UserContext(DbContextOptions<UserContext> options)
-           : base(options)
-        {
+            Users = new List<domain.User>();
+            Favorites = new List<domain.PokemonFavorite>();
         }
 
-        public virtual DbSet<domain.User> Users { get; set; }
-        public virtual DbSet<domain.PokemonFavorite> Favorites { get; set; }
+        private IEnumerable<domain.User> Users { get; set; }
+        private IEnumerable<domain.PokemonFavorite> Favorites { get; set; }        
         
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        public List<TEntity> Set<TEntity>()
         {
-            modelBuilder.ApplyConfiguration(new Configurations.UserConfiguration());
-            modelBuilder.ApplyConfiguration(new Configurations.FavoriteConfiguration());
-            
-            OnModelCreatingPartial(modelBuilder);
-        }
+            List<TEntity> entities = new List<TEntity>();
+            string className = typeof(TEntity).Name;
 
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+            switch (className)
+            {
+                case "User":
+                    entities = (List<TEntity>)Users;
+                    break;
+                case "PokemonFavorite":
+                    entities = (List<TEntity>)Favorites;
+                    break;
+                default:
+                    break;
+            }
+            return entities;
+        }
     }
 }
