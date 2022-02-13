@@ -1,6 +1,6 @@
 ﻿namespace Users.User.domain
 {
-    public readonly struct UserName
+    public class UserName
     {
         public string Value { get; } 
         
