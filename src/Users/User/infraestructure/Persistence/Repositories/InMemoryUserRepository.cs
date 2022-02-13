@@ -6,6 +6,7 @@ namespace Users.User.infraestructure.Persistence.Repositories;
 public class InMemoryUserRepository : IUserRepository
 {    
     private readonly List<domain.User> _users;
+  
     public InMemoryUserRepository(UserContext context)
     {        
         _users = context.Set<domain.User>();
@@ -33,25 +34,25 @@ public class InMemoryUserRepository : IUserRepository
         return _users.Where(u=>u.Id.Value == userId.Value).Any();
     }
 
-    public void Insert(domain.User user)
+    #region Metodos privados
+
+    private void Insert(domain.User user)
     {
         _users.Add(user);
     }
 
-    public void Delete(domain.User user)
+    private void Delete(domain.User user)
     {
         int index = FindIndex(user.Id);
         domain.User userToDeleted = _users[index];
         _users.Remove(userToDeleted);
     }
 
-    public void Update(domain.User user)
+    private void Update(domain.User user)
     {
         int index = FindIndex(user.Id);        
         _users[index] = user;
     }
-
-
 
     private domain.User FindById(Guid userId)
     {
@@ -76,4 +77,6 @@ public class InMemoryUserRepository : IUserRepository
             Update(user);
         }
     }
+ 
+    #endregion
 }
