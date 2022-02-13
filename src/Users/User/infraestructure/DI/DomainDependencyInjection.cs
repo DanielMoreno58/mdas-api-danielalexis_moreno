@@ -10,7 +10,6 @@ public static class DomainDependencyInjection
 
         services.AddTransient<UserCreator>();
         services.AddTransient<UserAddPokemonFavorite>();
-        services.AddTransient<UserFindById>();
 
         return services;
     }

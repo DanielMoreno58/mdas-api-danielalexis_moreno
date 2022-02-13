@@ -9,8 +9,13 @@
             _userRepository = userRepository;
         }
 
-        public void Execute(User user, PokemonFavorite pokemonFavorite)
+        public void Execute(UserId userId, PokemonFavorite pokemonFavorite)
         {
+            if (!_userRepository.Exists(userId))
+                throw new UserDoesNotExistException();
+
+            var user = _userRepository.Find(userId);
+
             user.PokemonFavorites.AddPokemonFavorite(pokemonFavorite);
 
             _userRepository.Save(user);

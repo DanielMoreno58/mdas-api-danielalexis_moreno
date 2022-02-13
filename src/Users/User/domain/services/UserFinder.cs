@@ -1,8 +1,8 @@
 namespace Users.User.domain {
-    public class UserFindById {
+    public class UserFinder {
         private readonly IUserRepository _userRepository;
 
-        public UserFindById(IUserRepository userRepository) {
+        public UserFinder(IUserRepository userRepository) {
             _userRepository = userRepository;
         }
 

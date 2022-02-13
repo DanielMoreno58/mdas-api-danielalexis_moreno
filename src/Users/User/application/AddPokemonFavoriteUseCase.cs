@@ -4,20 +4,20 @@ namespace Users.User.application
 {
     public class AddPokemonFavoriteUseCase
     {
-        private readonly UserFindById _userFindById;
         private readonly UserAddPokemonFavorite _userAddPokemonFavorite;
 
-        public AddPokemonFavoriteUseCase(UserFindById userFindById, UserAddPokemonFavorite userAddPokemonFavorite)
+        public AddPokemonFavoriteUseCase(UserAddPokemonFavorite userAddPokemonFavorite)
         {
-            _userFindById = userFindById;
             _userAddPokemonFavorite = userAddPokemonFavorite;
         }
 
-        public void Execute(UserId userId, PokemonFavorite pokemonFavorite)
+        public void Execute(Guid userIdparam, string pokemonIdparam)
         {
-            var user = _userFindById.Execute(userId);
+            var userId = new UserId(userIdparam);
+            var pokemonId = new PokemonId(pokemonIdparam);
+            var pokemonFavorite = PokemonFavorite.Create(pokemonId);
 
-            _userAddPokemonFavorite.Execute(user, pokemonFavorite);
+            _userAddPokemonFavorite.Execute(userId, pokemonFavorite);
         }
     }
 }
