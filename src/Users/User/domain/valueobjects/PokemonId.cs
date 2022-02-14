@@ -4,19 +4,9 @@
     {
         public Guid Value { get; }
 
-        public PokemonId() : this(Guid.NewGuid())
-        {
-
-        }
         public PokemonId(Guid id)
         {
             Value = id;
-        }
-
-        // TODO: Es necesario este metodo?
-        public PokemonId(string id)
-        {
-            Value = new Guid(id);
         }
 
         public override bool Equals(object? obj) =>
