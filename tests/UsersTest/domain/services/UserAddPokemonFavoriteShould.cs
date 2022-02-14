@@ -29,7 +29,7 @@ namespace UsersTest.domain.services
         }
 
         [Fact]
-        public void Should_Throw_An_Exception_When_User_Does_Not_Exists()
+        public void Throw_An_Exception_When_User_Does_Not_Exists()
         {
             var userRepository = new Mock<IUserRepository>();
             userRepository.Setup(_ => _.Exists(It.IsAny<UserId>())).Returns(false);
@@ -45,7 +45,7 @@ namespace UsersTest.domain.services
         }
 
         [Fact]
-        public void Should_Throw_An_Exception_When_PokemonFavorite_Already_Exists()
+        public void Throw_An_Exception_When_PokemonFavorite_Already_Exists()
         {
             //Given
             var userId = UserIdMother.Random();
