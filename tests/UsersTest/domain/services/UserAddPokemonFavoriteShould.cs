@@ -44,24 +44,5 @@ namespace UsersTest.domain.services
             userRepository.Verify(v => v.Save(It.IsAny<User>()), Times.Never);
         }
 
-        [Fact]
-        public void Throw_An_Exception_When_PokemonFavorite_Already_Exists()
-        {
-            //Given
-            var userId = UserIdMother.Random();
-            var user = UserMother.Random();
-            var pokemonFavorite = PokemonFavoriteMother.Random();
-
-            var userRepository = new Mock<IUserRepository>();
-            userRepository.Setup(_ => _.Exists(It.IsAny<UserId>())).Returns(true);
-            userRepository.Setup(_ => _.Find(It.IsAny<UserId>())).Returns(user);
-            _userAddPokemonFavorite = new UserAddPokemonFavorite(userRepository.Object);
-
-            //When 
-            _userAddPokemonFavorite.Execute(userId,pokemonFavorite);
-
-            //Then
-            Assert.Throws<PokemonFavoriteAlreadyExistException>(() => _userAddPokemonFavorite.Execute(userId, pokemonFavorite));
-        }
     }
 }
