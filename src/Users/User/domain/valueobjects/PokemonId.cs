@@ -13,6 +13,7 @@
             Value = id;
         }
 
+        // TODO: Es necesario este metodo?
         public PokemonId(string id)
         {
             Value = new Guid(id);

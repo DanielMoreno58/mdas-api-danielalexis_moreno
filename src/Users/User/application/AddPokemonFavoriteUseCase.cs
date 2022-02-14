@@ -11,7 +11,7 @@ namespace Users.User.application
             _userAddPokemonFavorite = userAddPokemonFavorite;
         }
 
-        public void Execute(Guid userIdparam, string pokemonIdparam)
+        public void Execute(Guid userIdparam, Guid pokemonIdparam)
         {
             var userId = new UserId(userIdparam);
             var pokemonId = new PokemonId(pokemonIdparam);
