@@ -1,4 +1,5 @@
-﻿using Users.User.domain;
+﻿using System;
+using Users.User.domain;
 using Users.User.infraestructure;
 
 namespace UsersTest.domain
@@ -8,6 +9,11 @@ namespace UsersTest.domain
         public static UserId Random()
         {
             return new UserId(GuidCreator.Execute());
+        }
+
+        public static UserId Random(Guid userId)
+        {
+            return new UserId(userId);
         }
     }
 
