@@ -9,7 +9,7 @@
             _userRepository = userRepository;
         }
 
-        public void Execute(UserId userId, UserName userName)
+        public virtual void Execute(UserId userId, UserName userName)
         {
             if (_userRepository.Exists(userId))
                 throw new UserAlreadyExistsException();
