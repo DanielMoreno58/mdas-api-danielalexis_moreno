@@ -9,7 +9,7 @@
             _userRepository = userRepository;
         }
 
-        public void Execute(UserId userId, PokemonFavorite pokemonFavorite)
+        public virtual void Execute(UserId userId, PokemonFavorite pokemonFavorite)
         {
             if (!_userRepository.Exists(userId))
                 throw new UserDoesNotExistException();
