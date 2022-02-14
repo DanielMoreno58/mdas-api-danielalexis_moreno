@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Users.User.application;
-using Users.User.domain;
 using Users.User.infraestructure;
 
 namespace UserApi.Controllers
