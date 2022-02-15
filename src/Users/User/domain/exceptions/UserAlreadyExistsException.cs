@@ -3,7 +3,7 @@ namespace Users.User.domain
     public class UserAlreadyExistsException : Exception
     {
         public UserAlreadyExistsException() 
-            : base()
+            : base("User already exists")
         {
         }
     }
