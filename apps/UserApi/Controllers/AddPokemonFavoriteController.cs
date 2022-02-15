@@ -5,7 +5,7 @@ using UserApi.Dto;
 namespace UserApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1/[controller]")]
     public class AddPokemonFavoriteController : ControllerBase
     {
 
