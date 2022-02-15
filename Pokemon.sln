@@ -18,13 +18,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserApi", "apps\UserApi\Use
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{E254D1AE-8FEA-4ECC-A6CF-DCFFCFD94D0B}"
 	ProjectSection(SolutionItems) = preProject
+		docker-compose-Reto2.yml = docker-compose-Reto2.yml
 		docker-compose.yml = docker-compose.yml
 		deploy\Dockerfile = deploy\Dockerfile
+		deploy\Dockerfile-Reto2 = deploy\Dockerfile-Reto2
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{837A272A-DE36-40BF-82DB-2A25193C7DEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersTest", "tests\UsersTest\UsersTest.csproj", "{D5D35E91-6105-4DBF-AD30-85B1E061258A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsersTest", "tests\UsersTest\UsersTest.csproj", "{D5D35E91-6105-4DBF-AD30-85B1E061258A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
