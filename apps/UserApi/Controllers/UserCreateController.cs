@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Users.User.application;
-using Users.User.infraestructure;
 
 namespace UserApi.Controllers
 {
@@ -19,11 +18,14 @@ namespace UserApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateUser([FromBody]string name)
+        public IActionResult CreateUser([FromBody]string name, [FromBody]Guid id)
         {
+            if (string.IsNullOrEmpty(name) || id == null)
+            {
+                return BadRequest();
+            }
             try
             {
-                Guid id = GuidCreator.Execute();
                _createUserUseCase.Execute(id,name);
                 return Ok();
             }
@@ -32,7 +34,5 @@ namespace UserApi.Controllers
                 return Conflict(e.Message);
             }
         }
-
-
     }
 }
