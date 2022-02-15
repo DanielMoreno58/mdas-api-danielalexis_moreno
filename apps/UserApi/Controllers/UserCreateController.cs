@@ -21,7 +21,7 @@ namespace UserApi.Controllers
         [HttpPost]
         public IActionResult CreateUser([FromBody]UserCreatorDto userCreatorDto)
         {
-            if (string.IsNullOrEmpty(userCreatorDto.Name) || userCreatorDto.Id == null)
+            if (string.IsNullOrEmpty(userCreatorDto.Name))
             {
                 return BadRequest();
             }

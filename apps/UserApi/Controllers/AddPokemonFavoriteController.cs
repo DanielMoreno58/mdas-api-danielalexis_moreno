@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Users.User.application;
-using Users.User.domain;
+using UserApi.Dto;
 
 namespace UserApi.Controllers
 {
@@ -19,11 +19,11 @@ namespace UserApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddPokemonFavorite(Guid userid, Guid pokemonid)
+        public IActionResult AddPokemonFavorite([FromBody] AddPokemonFavoriteDto addPokemonFavoriteDto)
         {
             try
             {
-                _addPokemonFavoriteUseCase.Execute(userid, pokemonid);
+                _addPokemonFavoriteUseCase.Execute(addPokemonFavoriteDto.UserId, addPokemonFavoriteDto.PokemonId);
                 return Ok();
             }
             catch (Exception e)
