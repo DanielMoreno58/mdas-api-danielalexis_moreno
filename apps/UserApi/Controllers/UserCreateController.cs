@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Users.User.application;
+using UserApi.Dto;
 
 namespace UserApi.Controllers
 {
@@ -18,15 +19,15 @@ namespace UserApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateUser([FromBody]string name, [FromBody]Guid id)
+        public IActionResult CreateUser([FromBody]UserCreatorDto userCreatorDto)
         {
-            if (string.IsNullOrEmpty(name) || id == null)
+            if (string.IsNullOrEmpty(userCreatorDto.Name) || userCreatorDto.Id == null)
             {
                 return BadRequest();
             }
             try
             {
-               _createUserUseCase.Execute(id,name);
+               _createUserUseCase.Execute(userCreatorDto.Id, userCreatorDto.Name);
                 return Ok();
             }
             catch(Exception e)
