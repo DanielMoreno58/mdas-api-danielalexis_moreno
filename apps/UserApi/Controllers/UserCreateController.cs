@@ -18,7 +18,7 @@ namespace UserApi.Controllers
             _createUserUseCase = createUserUseCase;
         }
 
-        [HttpPost("/User")]
+        [HttpPost("users")]
         public IActionResult CreateUser([FromBody]UserCreatorDto userCreatorDto)
         {
             if (string.IsNullOrEmpty(userCreatorDto.Name))

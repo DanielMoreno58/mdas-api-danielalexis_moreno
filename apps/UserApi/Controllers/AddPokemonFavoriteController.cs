@@ -18,7 +18,7 @@ namespace UserApi.Controllers
             _addPokemonFavoriteUseCase = addPokemonFavoriteUseCase;
         }
 
-        [HttpPost("/User/PokemonFavorite")]
+        [HttpPost("users/pokemonfavorite")]
         public IActionResult AddPokemonFavorite([FromBody] AddPokemonFavoriteDto addPokemonFavoriteDto)
         {
             try
