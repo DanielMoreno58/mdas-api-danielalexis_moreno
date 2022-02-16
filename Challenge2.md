@@ -31,6 +31,7 @@
 
     Exception Scenarios: <br>
     1. If you click again and try to add the same pokemon favorite the app will throw an exception (***PokemonFavoriteAlreadyExistException***) that indicates that the pokemon have been already added! <br><br>    
+    2. If you click again and try to add a pokemon favorite with the a user that not exists then the app will throw an exception (***UserDoesNotExistException***) that indicates that the user haven't been created! <br><br>    
 
 5. Run Tests:
 
