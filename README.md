@@ -33,6 +33,7 @@ This project was created by **Group 2** for the course Software Design 2 with th
 
 - Docker
 - Docker Compose
+- Postman (Only for Challenge 2)
   
 ---
 
