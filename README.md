@@ -4,7 +4,7 @@ This project was created by **Group 2** for the course Software Design 2 with th
 
 ---
 
-### Bounded Context: 
+### Bounded Context (Challenge #1): 
 
 * **Pokemon**
 
@@ -25,6 +25,34 @@ This project was created by **Group 2** for the course Software Design 2 with th
 
 * PokemonNotFoundException
 * PokemonApiNotResponseException
+
+---
+
+### Bounded Context (Challenge #2): 
+
+* **Users**
+
+### Module: 
+
+* User
+
+### Entities:
+
+* User
+* PokemonFavorite
+* PokemonFavoritesCollection
+
+### Value Objects:
+
+* PokemonId
+* UserId
+* UserName
+
+### Exceptions:
+
+* PokemonFavoriteAlreadyExistException
+* UserDoesNotExistException
+* UserAlreadyExistsException
 
 
 ---
