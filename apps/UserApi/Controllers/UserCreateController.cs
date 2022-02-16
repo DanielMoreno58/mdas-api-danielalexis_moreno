@@ -5,7 +5,7 @@ using UserApi.Dto;
 namespace UserApi.Controllers
 {
     [ApiController]
-    [Route("api/v1/[controller]")]
+    [Route("api/v1")]
     public class UserCreateController : ControllerBase
     {
 
@@ -18,7 +18,7 @@ namespace UserApi.Controllers
             _createUserUseCase = createUserUseCase;
         }
 
-        [HttpPost]
+        [HttpPost("/User")]
         public IActionResult CreateUser([FromBody]UserCreatorDto userCreatorDto)
         {
             if (string.IsNullOrEmpty(userCreatorDto.Name))

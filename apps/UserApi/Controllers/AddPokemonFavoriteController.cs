@@ -5,7 +5,7 @@ using UserApi.Dto;
 namespace UserApi.Controllers
 {
     [ApiController]
-    [Route("api/v1/[controller]")]
+    [Route("api/v1")]
     public class AddPokemonFavoriteController : ControllerBase
     {
 
@@ -18,7 +18,7 @@ namespace UserApi.Controllers
             _addPokemonFavoriteUseCase = addPokemonFavoriteUseCase;
         }
 
-        [HttpPost]
+        [HttpPost("/User/PokemonFavorite")]
         public IActionResult AddPokemonFavorite([FromBody] AddPokemonFavoriteDto addPokemonFavoriteDto)
         {
             try
