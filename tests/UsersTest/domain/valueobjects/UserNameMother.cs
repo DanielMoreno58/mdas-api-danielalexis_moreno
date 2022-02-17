@@ -7,7 +7,7 @@ namespace UsersTest.Domain
     {
         public static UserName Random()
         {
-            return new UserName(It.IsAny<string>());
+            return new UserName(Faker.Name.First());
         }
 
     }
