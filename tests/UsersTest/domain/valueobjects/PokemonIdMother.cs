@@ -1,7 +1,7 @@
-﻿using Users.User.domain;
-using Users.User.infraestructure;
+﻿using Users.User.Domain;
+using Users.User.Infraestructure;
 
-namespace UsersTest.domain
+namespace UsersTest.Domain
 {
     public class PokemonIdMother
     {

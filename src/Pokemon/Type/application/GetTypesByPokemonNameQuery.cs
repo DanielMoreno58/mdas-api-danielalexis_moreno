@@ -1,6 +1,6 @@
-﻿using Pokemon.Type.domain;
+﻿using Pokemon.Type.Domain;
 
-namespace Pokemon.Type.application
+namespace Pokemon.Type.Application
 {
     public class GetTypesByPokemonNameQuery
     {

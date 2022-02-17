@@ -1,5 +1,5 @@
 using System;
-namespace Pokemon.Type.domain
+namespace Pokemon.Type.Domain
 {
     public class PokemonApiNotResponseException : Exception
     {

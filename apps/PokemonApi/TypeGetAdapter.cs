@@ -1,4 +1,4 @@
-﻿using Pokemon.Type.application;
+﻿using Pokemon.Type.Application;
 
 namespace PokemonApi
 {

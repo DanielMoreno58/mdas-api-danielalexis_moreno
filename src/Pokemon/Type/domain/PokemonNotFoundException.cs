@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Pokemon.Type.domain
+namespace Pokemon.Type.Domain
 {
     public class PokemonNotFoundException : Exception
     {

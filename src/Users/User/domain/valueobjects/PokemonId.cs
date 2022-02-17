@@ -1,4 +1,4 @@
-﻿namespace Users.User.domain
+﻿namespace Users.User.Domain
 {
     public readonly struct PokemonId : IEquatable<PokemonId>
     {

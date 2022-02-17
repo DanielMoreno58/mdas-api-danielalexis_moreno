@@ -1,4 +1,4 @@
-﻿namespace Users.User.infraestructure
+﻿namespace Users.User.Infraestructure
 {
     public  class GuidCreator
     {

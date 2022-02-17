@@ -1,4 +1,4 @@
-using Users.User.infraestructure.DI;
+using Users.User.Infraestructure;
 
 var builder = WebApplication.CreateBuilder(args);
 

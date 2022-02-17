@@ -1,17 +1,15 @@
-﻿using System.Linq;
-
-namespace Users.User.infraestructure.Persistence.Contexts
+﻿namespace Users.User.Infraestructure
 {
     public partial class UserContext     {
 
         public UserContext()
         {
-            Users = new List<domain.User>();
-            Favorites = new List<domain.PokemonFavorite>();
+            Users = new List<Domain.User>();
+            Favorites = new List<Domain.PokemonFavorite>();
         }
 
-        private IEnumerable<domain.User> Users { get; set; }
-        private IEnumerable<domain.PokemonFavorite> Favorites { get; set; }        
+        private IEnumerable<Domain.User> Users { get; set; }
+        private IEnumerable<Domain.PokemonFavorite> Favorites { get; set; }        
         
         public List<TEntity> Set<TEntity>()
         {

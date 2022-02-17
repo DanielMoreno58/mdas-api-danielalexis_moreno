@@ -1,4 +1,4 @@
-﻿namespace Users.User.domain;
+﻿namespace Users.User.Domain;
 public class PokemonFavorite
 {
     private readonly PokemonId _pokemonId;

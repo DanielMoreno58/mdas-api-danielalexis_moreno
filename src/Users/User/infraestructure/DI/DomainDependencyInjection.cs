@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Users.User.domain;
+using Users.User.Domain;
 
-namespace Users.User.infraestructure.DI;
+namespace Users.User.Infraestructure;
 
 public static class DomainDependencyInjection
 {    

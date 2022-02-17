@@ -1,11 +1,10 @@
 using Moq;
-using Users.User.application;
-using Users.User.domain;
-using Users.User.infraestructure;
-using UsersTest.domain;
+using Users.User.Application;
+using Users.User.Domain;
+using Users.User.Infraestructure;
 using Xunit;
 
-namespace UsersTest.application
+namespace UsersTest.Application
 {
     public class CreateUserUseCaseTest
     {

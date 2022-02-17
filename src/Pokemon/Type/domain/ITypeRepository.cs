@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Pokemon.Type.domain
+namespace Pokemon.Type.Domain
 {
     public interface ITypeRepository
     {

@@ -1,8 +1,7 @@
 using Microsoft.OpenApi.Models;
-using Pokemon.Type.application;
-using Pokemon.Type.domain;
-using Pokemon.Type.infraestucture;
-using Pokemon.Type.infraestucture.HttpClients.PokeApi;
+using Pokemon.Type.Application;
+using Pokemon.Type.Domain;
+using Pokemon.Type.Infraestucture;
 
 var builder = WebApplication.CreateBuilder(args);
 var myAllowSpecificOrigins = "_myAllowSpecificOrigins";

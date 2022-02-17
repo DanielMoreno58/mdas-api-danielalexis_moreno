@@ -1,4 +1,4 @@
-﻿namespace Pokemon.Type.infraestucture.HttpClients.PokeApi
+﻿namespace Pokemon.Type.Infraestucture
 {
     public class PokeApiTypeDto
     {

@@ -1,25 +1,24 @@
-﻿using Users.User.domain;
-using Users.User.infraestructure.Persistence.Contexts;
+﻿using Users.User.Domain;
 
-namespace Users.User.infraestructure.Persistence.Repositories;
+namespace Users.User.Infraestructure;
 
 public class InMemoryUserRepository : IUserRepository
 {    
-    private readonly List<domain.User> _users;
+    private readonly List<Domain.User> _users;
   
     public InMemoryUserRepository(UserContext context)
     {        
-        _users = context.Set<domain.User>();
+        _users = context.Set<Domain.User>();
     }
 
-    public void Save(domain.User user)
+    public void Save(Domain.User user)
     {
         Upsert(user);        
     }
 
-    public domain.User Find(UserId userId)
+    public Domain.User Find(UserId userId)
     {
-        domain.User user = FindById(userId.Value);
+        Domain.User user = FindById(userId.Value);
         
         if(user== null)
         {
@@ -36,25 +35,25 @@ public class InMemoryUserRepository : IUserRepository
 
     #region Metodos privados
 
-    private void Insert(domain.User user)
+    private void Insert(Domain.User user)
     {
         _users.Add(user);
     }
 
-    private void Delete(domain.User user)
+    private void Delete(Domain.User user)
     {
         int index = FindIndex(user.Id);
-        domain.User userToDeleted = _users[index];
+        Domain.User userToDeleted = _users[index];
         _users.Remove(userToDeleted);
     }
 
-    private void Update(domain.User user)
+    private void Update(Domain.User user)
     {
         int index = FindIndex(user.Id);        
         _users[index] = user;
     }
 
-    private domain.User FindById(Guid userId)
+    private Domain.User FindById(Guid userId)
     {
         return _users.FirstOrDefault(u => u.Id.Value == userId)!;
     }
@@ -64,7 +63,7 @@ public class InMemoryUserRepository : IUserRepository
         int index = _users.FindIndex(u => u.Id.Value == userId.Value);
         return index;
     }
-    private void Upsert(domain.User user)
+    private void Upsert(Domain.User user)
     {
         int index = FindIndex(user.Id);
 

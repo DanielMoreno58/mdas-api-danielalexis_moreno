@@ -1,8 +1,8 @@
 ﻿using Moq;
-using Users.User.domain;
+using Users.User.Domain;
 using Xunit;
 
-namespace UsersTest.domain.services
+namespace UsersTest.Domain
 {
     public class UserCreatorShould
     {

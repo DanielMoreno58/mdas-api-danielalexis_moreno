@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Users.User.application;
+using Users.User.Application;
 using UserApi.Dto;
 
 namespace UserApi.Controllers

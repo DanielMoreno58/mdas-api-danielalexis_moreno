@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
-using Pokemon.Type.domain;
-using Pokemon.Type.infraestucture.Adapters;
-using Pokemon.Type.infraestucture.HttpClients.PokeApi;
+using Pokemon.Type.Domain;
 
-namespace Pokemon.Type.infraestucture
+namespace Pokemon.Type.Infraestucture
 {
     public class PokeApiTypeRepository : ITypeRepository
     {
@@ -12,11 +10,11 @@ namespace Pokemon.Type.infraestucture
         {
             _pokeApiHttpClient = pokeApiHttpClient;
         }
-        public List<domain.Type> FindByPokemonName(PokemonName pokemonName)
+        public List<Domain.Type> FindByPokemonName(PokemonName pokemonName)
         {
             var pokemon = _pokeApiHttpClient.FindByPokemonNameAsync(pokemonName.Value).Result;
 
-            List<domain.Type> types = HttpAdapter.PokeApiTypeDtoListToTypesList(pokemon);
+            List<Domain.Type> types = HttpAdapter.PokeApiTypeDtoListToTypesList(pokemon);
             return types;
         }
     

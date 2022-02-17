@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-using Users.User.application;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Users.User.Application;
 
-namespace Users.User.infraestructure.DI;
+namespace Users.User.Infraestructure;
 
 public static class ApplicationDependencyInjection
 {    

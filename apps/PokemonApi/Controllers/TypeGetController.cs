@@ -1,7 +1,6 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using Pokemon.Type.application;
-using Pokemon.Type.domain;
+﻿using Microsoft.AspNetCore.Mvc;
+using Pokemon.Type.Application;
+using Pokemon.Type.Domain;
 
 namespace PokemonApi.Controllers
 {
@@ -27,7 +26,7 @@ namespace PokemonApi.Controllers
             try
             {
                 var getTypesByPokemonNameQuery = TypeGetAdapter.GetByPokemonNameToGetTypesByPokemonNameQuery(name);
-                List<Pokemon.Type.domain.Type> result =
+                List<Pokemon.Type.Domain.Type> result =
                     _getTypesByPokemonNameUseCase.Execute(getTypesByPokemonNameQuery);
 
                 return Ok(result);

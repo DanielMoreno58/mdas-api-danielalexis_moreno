@@ -1,4 +1,4 @@
-﻿namespace Pokemon.Type.domain
+﻿namespace Pokemon.Type.Domain
 {
     public readonly struct TypeName
     {

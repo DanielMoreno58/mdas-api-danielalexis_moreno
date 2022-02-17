@@ -1,7 +1,6 @@
-﻿using System;
-using Users.User.domain;
+﻿using Users.User.Domain;
 
-namespace Users.User.application
+namespace Users.User.Application
 {
     public class AddPokemonFavoriteUseCase
     {

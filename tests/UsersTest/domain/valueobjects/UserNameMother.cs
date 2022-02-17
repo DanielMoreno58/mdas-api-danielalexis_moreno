@@ -1,7 +1,7 @@
 ﻿using Moq;
-using Users.User.domain;
+using Users.User.Domain;
 
-namespace UsersTest.domain
+namespace UsersTest.Domain
 {
     public class UserNameMother 
     {

@@ -1,20 +1,19 @@
-﻿using Pokemon.Type.domain;
-using Pokemon.Type.infraestucture.HttpClients.PokeApi;
+﻿using Pokemon.Type.Domain;
 using System.Collections.Generic;
 
-namespace Pokemon.Type.infraestucture.Adapters
+namespace Pokemon.Type.Infraestucture
 {
     internal static class HttpAdapter
     {
-        private static domain.Type PokeApiTypeDtoToType(PokeApiTypeDto pokeApiTypeDto)
+        private static Domain.Type PokeApiTypeDtoToType(PokeApiTypeDto pokeApiTypeDto)
         {
-            domain.Type type = domain.Type.Create(new TypeName(pokeApiTypeDto.Name));
+            Domain.Type type = Domain.Type.Create(new TypeName(pokeApiTypeDto.Name));
             return type;
         }
 
-        public static List<domain.Type> PokeApiTypeDtoListToTypesList(List<PokeApiTypeDto> pokeApiTypeDtos)
+        public static List<Domain.Type> PokeApiTypeDtoListToTypesList(List<PokeApiTypeDto> pokeApiTypeDtos)
         {
-            List<domain.Type> types = new List<domain.Type>();
+            List<Domain.Type> types = new List<Domain.Type>();
             pokeApiTypeDtos.ForEach(pokeApiTypeDto => types.Add(PokeApiTypeDtoToType(pokeApiTypeDto)));
             return types;
         }

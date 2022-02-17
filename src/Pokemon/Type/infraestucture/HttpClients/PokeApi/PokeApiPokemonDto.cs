@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Pokemon.Type.infraestucture.HttpClients.PokeApi
+namespace Pokemon.Type.Infraestucture
 {
     internal class PokeApiPokemonDto
     {

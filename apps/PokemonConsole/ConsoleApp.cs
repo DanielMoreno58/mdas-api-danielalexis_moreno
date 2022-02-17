@@ -1,5 +1,5 @@
-﻿using Pokemon.Type.application;
-using Pokemon.Type.domain;
+﻿using Pokemon.Type.Application;
+using Pokemon.Type.Domain;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -27,7 +27,7 @@ namespace PokemonConsole
                         Console.WriteLine("Name is required");
                     }
                 } while (pokemonName == string.Empty);
-                List<Pokemon.Type.domain.Type> result = _getTypesByPokemonNameUseCase.Execute(new GetTypesByPokemonNameQuery(pokemonName));
+                List<Pokemon.Type.Domain.Type> result = _getTypesByPokemonNameUseCase.Execute(new GetTypesByPokemonNameQuery(pokemonName));
 
                 string resultString = "";
                 foreach (var type in result)

@@ -1,8 +1,8 @@
 ﻿using Moq;
-using Users.User.domain;
+using Users.User.Domain;
 using Xunit;
 
-namespace UsersTest.domain.services
+namespace UsersTest.Domain
 {
     public class UserAddPokemonFavoriteShould
     {
@@ -43,6 +43,5 @@ namespace UsersTest.domain.services
             Assert.Throws<UserDoesNotExistException>(() => _userAddPokemonFavorite.Execute(userId, pokemonFavorite));
             userRepository.Verify(v => v.Save(It.IsAny<User>()), Times.Never);
         }
-
     }
 }

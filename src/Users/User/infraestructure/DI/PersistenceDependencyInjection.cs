@@ -1,13 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Users.User.domain;
-using Users.User.infraestructure.Persistence.Contexts;
-using Users.User.infraestructure.Persistence.Repositories;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Users.User.Domain;
 
-namespace Users.User.infraestructure.DI;
+namespace Users.User.Infraestructure;
 
 public static class PersistenceDependencyInjection
 {    

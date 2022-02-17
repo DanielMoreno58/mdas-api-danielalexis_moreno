@@ -1,13 +1,12 @@
-﻿using Pokemon.Type.infraestucture.Adapters;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using Pokemon.Type.domain;
+using Pokemon.Type.Domain;
 
-namespace Pokemon.Type.infraestucture.HttpClients.PokeApi
+namespace Pokemon.Type.Infraestucture
 {
     public class PokeApiHttpClient
     {

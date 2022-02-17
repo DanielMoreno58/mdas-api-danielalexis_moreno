@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Pokemon.Type.domain;
+using Pokemon.Type.Domain;
 
-namespace Pokemon.Type.application
+namespace Pokemon.Type.Application
 {
     public class GetTypesByPokemonNameUseCase
     {
@@ -12,7 +12,7 @@ namespace Pokemon.Type.application
             _findByPokemonName = findByPokemonName;
         }
 
-        public List<domain.Type> Execute(GetTypesByPokemonNameQuery getTypesByPokemonNameQuery)
+        public List<Domain.Type> Execute(GetTypesByPokemonNameQuery getTypesByPokemonNameQuery)
         {
             return _findByPokemonName.Execute(getTypesByPokemonNameQuery.Name());
         }

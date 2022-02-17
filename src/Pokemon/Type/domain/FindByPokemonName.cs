@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Pokemon.Type.domain {
+namespace Pokemon.Type.Domain {
 
     public class FindByPokemonName {
         private readonly ITypeRepository _typeRepository;
