@@ -1,4 +1,5 @@
-﻿using Users.User.domain;
+﻿using System;
+using Users.User.domain;
 
 namespace Users.User.application
 {
