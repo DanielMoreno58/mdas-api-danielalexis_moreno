@@ -12,8 +12,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pokemon\application\" />
-    <Folder Include="Pokemon\domain\services\" />
-    <Folder Include="Pokemon\infraestructure\" />
     <Folder Include="Type\application\" />
     <Folder Include="Type\domain\" />
   </ItemGroup>
