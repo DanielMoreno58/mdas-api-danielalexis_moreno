@@ -1,6 +1,7 @@
 ﻿namespace Pokemon.Pokemon.Domain
 {
-    public class IPokemonRepository
+    public interface IPokemonRepository
     {
+        Pokemon Find(PokemonId pokemonId);
     }
 }
