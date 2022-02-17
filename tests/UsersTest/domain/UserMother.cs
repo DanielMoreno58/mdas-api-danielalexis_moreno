@@ -1,5 +1,4 @@
-﻿
-using Moq;
+﻿using Moq;
 using Users.User.Domain;
 
 namespace UsersTest.Domain
@@ -9,7 +8,10 @@ namespace UsersTest.Domain
     {
         public static User Random()
         {
-            return User.Create(It.IsAny<UserId>(), It.IsAny<UserName>()); 
+            UserId userId = UserIdMother.Random();
+            UserName userName = new UserName(Faker.Name.First());
+
+            return User.Create(userId, userName); 
         }
 
         public static User Random(UserId userId, UserName userName)
@@ -17,5 +19,4 @@ namespace UsersTest.Domain
             return User.Create(userId, userName);
         }
     }
-
 }

@@ -33,10 +33,10 @@ namespace PokemonApi.Controllers
             }
             catch (Exception e)
             {
-                if (e.InnerException.GetType().Equals(typeof(PokemonNotFoundException)))
+                if (e is PokemonNotFoundException)
                     return NotFound(e.Message);
 
-                if (e.InnerException.GetType().Equals(typeof(PokemonApiNotResponseException)))
+                if (e is PokemonApiNotResponseException)
                     return Conflict(e.Message);
 
                 return NotFound("Oops, something has gone wrong. Try again later.");
