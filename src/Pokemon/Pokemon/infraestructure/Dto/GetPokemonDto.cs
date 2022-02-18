@@ -1,7 +1,7 @@
 ﻿
 namespace Pokemon.Pokemon.Infraestructure
 {
-    internal class GetPokemonDto
+    public class GetPokemonDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

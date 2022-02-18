@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Pokemon.Pokemon.Application;
 using Pokemon.Pokemon.Domain;
-using Pokemon.Type.Domain;
 using PokemonNotFoundException = Pokemon.Pokemon.Domain.PokemonNotFoundException;
 
 namespace PokemonApi.Controllers
@@ -23,14 +22,14 @@ namespace PokemonApi.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest("Oops, something has gone wrong with request. Correct your call and try again");
-
             }
 
             try
             {
-                Pokemon.Pokemon.Domain.Pokemon result = _getPokemonByPokemonIdUseCase.Execute(id);
+                Pokemon.Pokemon.Domain.Pokemon pokemon = _getPokemonByPokemonIdUseCase.Execute(id);
+                var pokemonDto = PokemonGetAdapter.PokemonToGetPokemonDto(pokemon);
 
-                return Ok(result);
+                return Ok(pokemonDto);
             }
             catch (Exception e)
             {
