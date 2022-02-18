@@ -6,7 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using TypeTests.Infrastructure.HttpClients.PokeApi;
 using Xunit;
 
 namespace TypeTests.Infrastructure
@@ -14,42 +16,22 @@ namespace TypeTests.Infrastructure
     public class PokeApiTypeRepositoryTest
     {
         [Fact]
-        public void Should_Find_A_Type_By_PokemonName()
+        public void Should_Find_Some_Types_By_PokemonName()
         {
-            /*
-         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Url { get; set; }
-        public List<PokeApiTypesDto> Types { get; set; }
-             */
-
             //Given
-            string pokemonUrl = "https://pokeapi.co/api/v2/pokemon/";
+            string pokemonUrl = "https://pokeapi.co/api/v2/pokemon";
             var mockHttp = new MockHttpMessageHandler();
-            var res = @"
-                {
-                    'id': 25,
-                    'name': 'pikachu',
-                    'url': ''
-                    'types': [
-                        {
-                            'slot': 1,
-                            'type': {
-                                'name': 'electric',
-                                'url': 'https://pokeapi.co/api/v2/type/13'
-                            }
-                        }
-                    ],
-                }
-            ";
-            mockHttp.When($"{pokemonUrl}*").Respond("application/json", res);
+            var pokeApiPokemonDto = PokeApiPokemonDtoMother.Random();
+            var response = JsonSerializer.Serialize(pokeApiPokemonDto);             
+            mockHttp.When($"{pokemonUrl}/{pokeApiPokemonDto.Name}").Respond("application/json", response);
             var httpClient = new HttpClient(mockHttp);
             var pokeApiHttpClient = new PokeApiHttpClient(httpClient);
             var pokeApiTypeRepository = new PokeApiTypeRepository(pokeApiHttpClient);
             //When
-            var types = pokeApiTypeRepository.FindByPokemonName(new PokemonName("pikachu"));
+            var types = pokeApiTypeRepository.FindByPokemonName(new PokemonName(pokeApiPokemonDto.Name));
             //Then
-            Assert.Equal("electric",types.First().Name.Value);
+            Assert.Equal(pokeApiPokemonDto.Types.Count(),types.Count());
+            Assert.Equal(pokeApiPokemonDto.Types.First().Type.Name, types.First().Name.Value);
         }
     }
 }
