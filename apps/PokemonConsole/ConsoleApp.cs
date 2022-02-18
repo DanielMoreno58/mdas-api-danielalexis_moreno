@@ -45,7 +45,7 @@ namespace PokemonConsole
                     return;
                 }
 
-                if (e.InnerException.GetType().Equals(typeof(PokemonApiNotResponseException)))
+                if (e.InnerException.GetType().Equals(typeof(TypeRepositoryIsNotRespondingException)))
                 {
                     Console.WriteLine(e.Message);
                     return;

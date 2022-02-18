@@ -36,7 +36,7 @@ namespace PokemonApi.Controllers
                 if (e is PokemonNotFoundException)
                     return NotFound(e.Message);
 
-                if (e is PokemonApiNotResponseException)
+                if (e is TypeRepositoryIsNotRespondingException)
                     return Conflict(e.Message);
 
                 return NotFound("Oops, something has gone wrong. Try again later.");
