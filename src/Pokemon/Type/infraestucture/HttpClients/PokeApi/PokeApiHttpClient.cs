@@ -13,10 +13,10 @@ namespace Pokemon.Type.Infraestucture
         private HttpClient _pokemonClient;
         private string pokemonUrl = "https://pokeapi.co/api/v2/pokemon/";
    
-        public PokeApiHttpClient(HttpClient pokemoClient)
+        public PokeApiHttpClient(HttpClient pokemonClient)
         {
-            pokemoClient.BaseAddress = new Uri(pokemonUrl);
-            _pokemonClient = pokemoClient;
+            pokemonClient.BaseAddress = new Uri(pokemonUrl);
+            _pokemonClient = pokemonClient;
         }
 
         public async Task<List<PokeApiTypeDto>> FindByPokemonNameAsync(string pokemonName)
