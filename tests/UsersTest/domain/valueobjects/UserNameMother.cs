@@ -1,5 +1,4 @@
-﻿using Moq;
-using Users.User.Domain;
+﻿using Users.User.Domain;
 
 namespace UsersTest.Domain
 {
@@ -9,7 +8,5 @@ namespace UsersTest.Domain
         {
             return new UserName(Faker.Name.First());
         }
-
     }
-
 }

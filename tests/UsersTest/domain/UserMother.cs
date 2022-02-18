@@ -1,5 +1,4 @@
-﻿
-using Moq;
+﻿using Moq;
 using Users.User.Domain;
 
 namespace UsersTest.Domain
@@ -20,5 +19,4 @@ namespace UsersTest.Domain
             return User.Create(userId, userName);
         }
     }
-
 }
