@@ -1,12 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Pokemon.Type.Application;
-using Pokemon.Type.Domain;
 using Pokemon.Type.Infraestucture;
+using System;
+using System.Threading.Tasks;
 
 namespace PokemonConsole
 {
@@ -23,10 +21,11 @@ namespace PokemonConsole
                 {
                     app.AddJsonFile("appsettings.json");
                 })
-                .ConfigureServices((_, services) => {
-                    services.AddTransient<ITypeRepository, PokeApiTypeRepository>();
-                    services.AddTransient<GetTypesByPokemonNameUseCase>();
-                    services.AddTransient<FindByPokemonName>();
+                .ConfigureServices((_, services) =>
+                {
+                    services.AddTypeDomain();
+                    services.AddTypeApplication();
+                    services.AddTypeInfraestructure();
                     services.AddHttpClient<PokeApiHttpClient>();
                     services.AddTransient<ConsoleApp>();
                 })
