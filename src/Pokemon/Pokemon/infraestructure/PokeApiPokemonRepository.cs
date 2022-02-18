@@ -6,7 +6,7 @@ using System.Net.Http.Json;
 using System.Threading.Tasks;
 using PokemonNotFoundException = Pokemon.Pokemon.Domain.PokemonNotFoundException;
 
-namespace Pokemon.Pokemon.Infraestucture
+namespace Pokemon.Pokemon.Infraestructure
 {
     public class PokeApiPokemonRepository : IPokemonRepository
     {
@@ -15,7 +15,7 @@ namespace Pokemon.Pokemon.Infraestucture
 
         public PokeApiPokemonRepository(HttpClient httpClient)
         {
-            _pokemonClient = httpClient;    
+            _pokemonClient = httpClient;
             _pokemonClient.BaseAddress = new Uri(PokemonUrl);
         }
 
