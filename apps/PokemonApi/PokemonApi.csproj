@@ -20,12 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Pokemon\Pokemon.csproj" />
-    <ProjectReference Include="..\..\src\Users\Users.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
-    <ProjectReference Include="..\UserApi\UserApi.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
   </ItemGroup>
 
 </Project>
