@@ -6,7 +6,7 @@ namespace Pokemon.Pokemon.Infraestructure;
 
 public static class InfraestructureDependencyInjection
 {
-    public static IServiceCollection AddInfraestructure(this IServiceCollection services)
+    public static IServiceCollection AddPokemonInfraestructure(this IServiceCollection services)
     {
         services.AddScoped<IPokemonRepository, PokeApiPokemonRepository>();
 
