@@ -1,10 +1,4 @@
-﻿using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Users.User.Infraestructure;
+﻿using Users.User.Infraestructure;
 using UsersTest.Domain;
 using Xunit;
 
