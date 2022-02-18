@@ -2,9 +2,9 @@ using System;
 
 namespace Pokemon.Pokemon.Domain
 {
-    public class PokemonRepositoryIsNotResponding : Exception
+    public class PokemonRepositoryIsNotRespondingException : Exception
     {
-        public PokemonRepositoryIsNotResponding()
+        public PokemonRepositoryIsNotRespondingException()
             : base("Pokemon repository is not responding")
         { }
     }

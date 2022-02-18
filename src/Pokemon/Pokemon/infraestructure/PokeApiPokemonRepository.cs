@@ -50,7 +50,7 @@ namespace Pokemon.Pokemon.Infraestucture
                     case HttpStatusCode.NotFound:
                         throw new PokemonNotFoundException();
                     default:
-                        throw new PokemonRepositoryIsNotResponding();
+                        throw new PokemonRepositoryIsNotRespondingException();
                 }
             }
 
