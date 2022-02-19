@@ -14,17 +14,23 @@ namespace UsersTest.infraestructure
         [Fact, Trait("Type", "Acceptance")]
         private void Should_Create_New_User()
         {
+            var tuple = Create_New_User();
+            Assert.True(tuple.Item1.IsSuccessStatusCode);
+        }
+
+        public Tuple<HttpResponseMessage, Guid> Create_New_User()
+        {
             HttpClient httpClient = new HttpClient();
             string postUrl = "http://userfavorite:80/api/v1/users";
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            Guid id = Guid.NewGuid();
+            Guid userId = Guid.NewGuid();
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, postUrl);
-            request.Content = new StringContent("{\"name\":\"Jonh Doe\",\"id\":\"" + id + "\"}",
+            request.Content = new StringContent("{\"name\":\"Jonh Doe\",\"id\":\"" + userId + "\"}",
                                                 Encoding.UTF8,
                                                 "application/json");
             var response = httpClient.SendAsync(request).GetAwaiter().GetResult();
-            Assert.True(response.IsSuccessStatusCode);
+            return Tuple.Create(response, userId);
         }
     }
 }
