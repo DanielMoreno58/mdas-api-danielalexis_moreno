@@ -18,19 +18,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserApi", "apps\UserApi\Use
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{E254D1AE-8FEA-4ECC-A6CF-DCFFCFD94D0B}"
 	ProjectSection(SolutionItems) = preProject
+		docker-compose-Reto1.yml = docker-compose-Reto1.yml
 		docker-compose-Reto2.yml = docker-compose-Reto2.yml
+		docker-compose-Reto3.yml = docker-compose-Reto3.yml
 		docker-compose.yml = docker-compose.yml
 		deploy\Dockerfile = deploy\Dockerfile
+		deploy\Dockerfile-Reto1 = deploy\Dockerfile-Reto1
 		deploy\Dockerfile-Reto2 = deploy\Dockerfile-Reto2
+		deploy\Dockerfile-Reto3-Test = deploy\Dockerfile-Reto3-Test
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{837A272A-DE36-40BF-82DB-2A25193C7DEB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsersTest", "tests\UsersTest\UsersTest.csproj", "{D5D35E91-6105-4DBF-AD30-85B1E061258A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypeTests", "tests\TypeTests\TypeTests.csproj", "{CCF26125-AA7B-4FF0-A070-71A9B7169230}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TypeTests", "tests\TypeTests\TypeTests.csproj", "{CCF26125-AA7B-4FF0-A070-71A9B7169230}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonTests", "tests\PokemonTests\PokemonTests.csproj", "{4CBB672C-6807-42E2-BD55-D172BB0DA1BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonTests", "tests\PokemonTests\PokemonTests.csproj", "{4CBB672C-6807-42E2-BD55-D172BB0DA1BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
