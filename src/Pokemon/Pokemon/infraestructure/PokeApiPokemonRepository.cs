@@ -21,7 +21,9 @@ namespace Pokemon.Pokemon.Infraestructure
 
         public bool Exists(PokemonId pokemonId)
         {
-            return true;
+            var exists = ExistsAsync(pokemonId.Value).Result;
+            
+            return exists;
         }
 
         public Domain.Pokemon Find(PokemonId pokemonId)
@@ -54,6 +56,26 @@ namespace Pokemon.Pokemon.Infraestructure
                 }
             }
 
+        }
+        private async Task<bool> ExistsAsync(int pokemonId)
+        {
+            string url = $"{pokemonId}";
+            try
+            {
+                PokeApiPokemonDto pokemon = await _pokemonClient.GetFromJsonAsync<PokeApiPokemonDto>(url);
+
+                return true;
+            }
+            catch (HttpRequestException e)
+            {
+                switch (e.StatusCode)
+                {
+                    case HttpStatusCode.NotFound:
+                        return false;
+                    default:
+                        throw new PokemonRepositoryIsNotRespondingException();
+                }
+            }
         }
 
 
