@@ -1,5 +1,5 @@
 ﻿using Pokemon.Pokemon.Domain;
-using Pokemon.Pokemon.Infraestructure;
+using Pokemon.Pokemon.Infrastructure;
 
 namespace PokemonApi
 {

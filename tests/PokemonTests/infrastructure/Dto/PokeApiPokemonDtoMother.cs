@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Pokemon.Pokemon.Infraestructure;
+using Pokemon.Pokemon.Infrastructure;
 
-namespace PokemonTests.infraestructure.Dto
+namespace PokemonTests.Infrastructure.Dto
 {
     public class PokeApiPokemonDtoMother
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Pokemon.Type.Domain;
 
-namespace Pokemon.Type.Infraestucture
+namespace Pokemon.Type.Infrastructure
 {
     public class PokeApiTypeRepository : ITypeRepository
     {

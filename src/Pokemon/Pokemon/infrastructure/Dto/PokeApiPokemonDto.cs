@@ -1,5 +1,5 @@
 ﻿
-namespace Pokemon.Pokemon.Infraestructure
+namespace Pokemon.Pokemon.Infrastructure
 {
     public class PokeApiPokemonDto
     {

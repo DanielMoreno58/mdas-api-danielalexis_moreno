@@ -1,5 +1,5 @@
 ﻿using Pokemon.Type.Domain;
-using Pokemon.Type.Infraestucture;
+using Pokemon.Type.Infrastructure;
 using RichardSzalay.MockHttp;
 using System;
 using System.Collections.Generic;

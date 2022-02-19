@@ -1,4 +1,4 @@
-﻿namespace Pokemon.Type.Infraestucture
+﻿namespace Pokemon.Type.Infrastructure
 {
     public class PokeApiTypesDto
     {

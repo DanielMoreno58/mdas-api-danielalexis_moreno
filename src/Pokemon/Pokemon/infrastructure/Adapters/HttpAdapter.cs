@@ -1,6 +1,6 @@
 ﻿using Pokemon.Pokemon.Domain;
 
-namespace Pokemon.Pokemon.Infraestructure
+namespace Pokemon.Pokemon.Infrastructure
 {
     internal static class HttpAdapter
     {

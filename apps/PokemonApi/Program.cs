@@ -1,6 +1,6 @@
 using Microsoft.OpenApi.Models;
-using Pokemon.Pokemon.Infraestructure;
-using Pokemon.Type.Infraestucture;
+using Pokemon.Pokemon.Infrastructure;
+using Pokemon.Type.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 

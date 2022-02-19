@@ -1,5 +1,5 @@
 ﻿using Moq;
-using Pokemon.Type.Infraestucture;
+using Pokemon.Type.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;

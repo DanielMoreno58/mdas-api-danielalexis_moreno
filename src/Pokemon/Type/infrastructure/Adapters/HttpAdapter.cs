@@ -1,7 +1,7 @@
 ﻿using Pokemon.Type.Domain;
 using System.Collections.Generic;
 
-namespace Pokemon.Type.Infraestucture
+namespace Pokemon.Type.Infrastructure
 {
     internal static class HttpAdapter
     {

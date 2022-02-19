@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Pokemon.Pokemon.Application;
 
-namespace Pokemon.Pokemon.Infraestructure;
+namespace Pokemon.Pokemon.Infrastructure;
 
 public static class ApplicationDependencyInjection
 {

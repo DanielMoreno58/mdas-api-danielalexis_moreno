@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Pokemon.Pokemon.Domain;
 
-namespace Pokemon.Pokemon.Infraestructure;
+namespace Pokemon.Pokemon.Infrastructure;
 
 public static class DomainDependencyInjection
 {

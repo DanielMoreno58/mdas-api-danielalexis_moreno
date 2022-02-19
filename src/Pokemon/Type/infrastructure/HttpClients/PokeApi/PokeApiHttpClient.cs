@@ -6,7 +6,7 @@ using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Pokemon.Type.Domain;
 
-namespace Pokemon.Type.Infraestucture
+namespace Pokemon.Type.Infrastructure
 {
     public class PokeApiHttpClient
     {

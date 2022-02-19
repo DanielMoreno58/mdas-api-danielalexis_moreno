@@ -1,6 +1,6 @@
 ﻿using Pokemon.Pokemon.Domain;
-using Pokemon.Pokemon.Infraestructure;
-using PokemonTests.infraestructure.Dto;
+using Pokemon.Pokemon.Infrastructure;
+using PokemonTests.Infrastructure.Dto;
 using RichardSzalay.MockHttp;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace PokemonTests.infraestructure
+namespace PokemonTests.Infrastructure
 {
     public class PokeApiPokemonRepositoryTest
     {
