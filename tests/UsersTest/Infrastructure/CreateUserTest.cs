@@ -11,7 +11,7 @@ namespace UsersTest.infraestructure
 
         private static HttpClient client = new HttpClient();
 
-        [Fact]
+        [Fact, Trait("Type", "Acceptance")]
         private void Should_Create_New_User()
         {
             HttpClient httpClient = new HttpClient();
