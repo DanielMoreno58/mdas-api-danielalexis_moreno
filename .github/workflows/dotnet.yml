@@ -22,4 +22,4 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal --filter FullyQualifiedName!=xUnit.CreateUser.Should_Create_New_User
+      run: dotnet test --no-build --verbosity normal --filter FullyQualifiedName!=Should_Create_New_User
