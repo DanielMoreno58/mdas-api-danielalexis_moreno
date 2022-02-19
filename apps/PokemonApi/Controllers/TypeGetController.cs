@@ -22,7 +22,6 @@ namespace PokemonApi.Controllers
             {
                 return BadRequest("Name is required");
             }
-
             try
             {
                 var getTypesByPokemonNameQuery = TypeGetAdapter.GetByPokemonNameToGetTypesByPokemonNameQuery(name);
@@ -33,15 +32,12 @@ namespace PokemonApi.Controllers
             }
             catch (Exception e)
             {
-                if (e.InnerException.GetType().Equals(typeof(PokemonNotFoundException)))
+                if (e.InnerException is PokemonNotFoundException)
                     return NotFound(e.Message);
-
-                if (e.InnerException.GetType().Equals(typeof(TypeRepositoryIsNotRespondingException)))
+                if (e.InnerException is TypeRepositoryIsNotRespondingException)
                     return Conflict(e.Message);
-
                 return NotFound("Oops, something has gone wrong. Try again later.");
             }
         }
-
     }
 }

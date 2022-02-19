@@ -28,7 +28,6 @@ namespace PokemonConsole
                     }
                 } while (pokemonName == string.Empty);
                 List<Pokemon.Type.Domain.Type> result = _getTypesByPokemonNameUseCase.Execute(new GetTypesByPokemonNameQuery(pokemonName));
-
                 string resultString = "";
                 foreach (var type in result)
                 {
@@ -39,21 +38,18 @@ namespace PokemonConsole
             }
             catch (Exception e)
             {
-                if (e.InnerException.GetType().Equals(typeof(PokemonNotFoundException)))
+                if (e.InnerException is PokemonNotFoundException)
                 {
                     Console.WriteLine(e.Message);
                     return;
                 }
-
-                if (e.InnerException.GetType().Equals(typeof(TypeRepositoryIsNotRespondingException)))
+                if (e.InnerException is TypeRepositoryIsNotRespondingException)
                 {
                     Console.WriteLine(e.Message);
                     return;
                 }
-
                 Console.WriteLine("Oops, something has gone wrong. Try again later.");
             }
-
             await Task.Delay(0);
         }
     }

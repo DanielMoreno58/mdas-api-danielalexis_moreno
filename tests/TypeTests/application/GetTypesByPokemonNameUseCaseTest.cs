@@ -12,15 +12,15 @@ namespace TypeTest.Application
         [Fact]
         public void Should_Return_A_Types_By_PokemonName()
         {
-            var typeRepository = new Mock<ITypeRepository>();
+            var findByPokemonName = new Mock<FindByPokemonName>(It.IsAny<ITypeRepository>());
             var type = TypeMother.Random();
-            typeRepository.Setup(_ => _.FindByPokemonName(It.IsAny<PokemonName>())).Returns(new List<Type>() { type });
-            var findByPokemonName = new Mock<FindByPokemonName>(typeRepository.Object);
+            findByPokemonName.Setup(_ => _.Execute(It.IsAny<PokemonName>())).Returns(new List<Type>() { type });
             var getTypesByPokemonNameUseCase = new GetTypesByPokemonNameUseCase(findByPokemonName.Object);
+            var getTypesByPokemonNameQuery = new GetTypesByPokemonNameQuery("pikachu");
 
-            var result = getTypesByPokemonNameUseCase.Execute(new GetTypesByPokemonNameQuery("pikachu"));
+            var result = getTypesByPokemonNameUseCase.Execute(getTypesByPokemonNameQuery);
 
-            Assert.Equal(type.Name, result[0].Name);
+            Assert.Equal(type.Name.Value, result[0].Name.Value);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace UsersTest.Application
         public void Should_Create_A_User()
         {
             //Given
-            var userCreator = new Mock<UserCreator>(new Mock<IUserRepository>().Object);
+            var userCreator = new Mock<UserCreator>(It.IsAny<IUserRepository>());
             var createUserUseCase = new CreateUserUseCase(userCreator.Object);
             var userId = GuidCreator.Execute();
             var name = It.IsAny<string>();

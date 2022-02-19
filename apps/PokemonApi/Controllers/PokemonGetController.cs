@@ -23,7 +23,6 @@ namespace PokemonApi.Controllers
             {
                 return BadRequest("Oops, something has gone wrong with request. Correct your call and try again");
             }
-
             try
             {
                 Pokemon.Pokemon.Domain.Pokemon pokemon = _getPokemonByPokemonIdUseCase.Execute(id);
@@ -33,15 +32,12 @@ namespace PokemonApi.Controllers
             }
             catch (Exception e)
             {
-                if (e.InnerException.GetType().Equals(typeof(PokemonNotFoundException)))
+                if (e.InnerException is PokemonNotFoundException)
                     return NotFound(e.Message);
-
-                if (e.InnerException.GetType().Equals(typeof(PokemonRepositoryIsNotRespondingException)))
+                if (e.InnerException is PokemonRepositoryIsNotRespondingException)
                     return Conflict(e.Message);
-
                 return NotFound("Oops, something has gone wrong. Try again later.");
             }
         }
-
     }
 }

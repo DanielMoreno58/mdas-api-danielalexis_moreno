@@ -1,11 +1,8 @@
-﻿using System.Collections.Generic;
-using System;
+﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Threading.Tasks;
 using Xunit;
 using System.Text;
-using System.Web.Http;
 
 namespace UsersTest.infraestructure
 {
@@ -19,19 +16,15 @@ namespace UsersTest.infraestructure
         {
             HttpClient httpClient = new HttpClient();
             string postUrl = "http://localhost:4080/api/v1/users";
-
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
             Guid id = Guid.NewGuid();
-
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, postUrl);
             request.Content = new StringContent("{\"name\":\"Jonh Doe\",\"id\":\""+id+"\"}",
                                                 Encoding.UTF8, 
                                                 "application/json");
             var response = httpClient.SendAsync(request).GetAwaiter().GetResult();
-
-            Assert.Equal(response.IsSuccessStatusCode, true);
+            Assert.True(response.IsSuccessStatusCode);
         }
     }
 }

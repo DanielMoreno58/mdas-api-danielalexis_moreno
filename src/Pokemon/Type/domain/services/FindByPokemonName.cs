@@ -8,7 +8,7 @@ namespace Pokemon.Type.Domain {
             _typeRepository = typeRepository;
         }
         
-        public List<Type> Execute(PokemonName pokemonName) {
+        public virtual List<Type> Execute(PokemonName pokemonName) {
             var types = _typeRepository.FindByPokemonName(pokemonName);
             if (types.Count == 0)
             {

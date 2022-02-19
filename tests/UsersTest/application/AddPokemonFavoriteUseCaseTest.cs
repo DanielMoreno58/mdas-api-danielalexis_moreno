@@ -17,12 +17,8 @@ namespace UsersTest.Application
             var pokemonId = GuidCreator.Execute();
             var userId = UserIdMother.Random(userGuid);
             var user = UserMother.Random(userId, It.IsAny<UserName>());
-
-            var userRepository = new Mock<IUserRepository>();
-            userRepository.Setup(_ => _.Exists(It.IsAny<UserId>())).Returns(true);
-            userRepository.Setup(_ => _.Find(It.IsAny<UserId>())).Returns(user);
-
-            var userAddPokemonFavorite = new Mock<UserAddPokemonFavorite>(userRepository.Object);
+            var userAddPokemonFavorite = new Mock<UserAddPokemonFavorite>(It.IsAny<IUserRepository>());
+            userAddPokemonFavorite.Setup(_ => _.Execute(It.IsAny<UserId>(), It.IsAny<PokemonFavorite>()));
             var addPokemonFavoriteUseCase = new AddPokemonFavoriteUseCase(userAddPokemonFavorite.Object);
 
             //When
