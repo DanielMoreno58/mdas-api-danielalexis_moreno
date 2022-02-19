@@ -15,11 +15,8 @@ namespace TypeTests.infraestructure
             HttpClient httpClient = new HttpClient();
             string url = "http://pokemon:80/api/v1/TypeGet";
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url);
-            request.Content = new StringContent("{\"name\":\"charizard\"}",
-                                                Encoding.UTF8,
-                                                "application/json");
             var response = httpClient.SendAsync(request).GetAwaiter().GetResult();
-            Console.WriteLine(response);
+            Assert.True(response.IsSuccessStatusCode);
         }
     }
 }
