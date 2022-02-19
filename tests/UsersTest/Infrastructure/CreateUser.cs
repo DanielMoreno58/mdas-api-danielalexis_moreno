@@ -15,25 +15,23 @@ namespace UsersTest.infraestructure
         private static HttpClient client = new HttpClient();
         
         [Fact]
-        private async void Should_Create_New_User()
+        private void Should_Create_New_User()
         {
-
             HttpClient httpClient = new HttpClient();
             string postUrl = "http://localhost:4080/api/v1/users";
 
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            Guid id = new Guid();
+            Guid id = Guid.NewGuid();
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, postUrl);
-            request.Content = new StringContent("{\"name\":\"damian\",\"id\":\"3fa85f64-5717-4562-b3fc-2c963f66afb6\"}",
+            request.Content = new StringContent("{\"name\":\"Jonh Doe\",\"id\":\""+id+"\"}",
                                                 Encoding.UTF8, 
                                                 "application/json");
-            var resp = httpClient.SendAsync(request).GetAwaiter().GetResult();
+            var response = httpClient.SendAsync(request).GetAwaiter().GetResult();
 
-            Console.WriteLine(resp);
-
+            Assert.Equal(response.IsSuccessStatusCode, true);
         }
     }
 }
