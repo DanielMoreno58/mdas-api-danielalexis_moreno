@@ -16,7 +16,7 @@ namespace UsersTest.infraestructure
 
         private CreateUserTest createUserTest = new CreateUserTest();
         
-        [Fact]
+        [Fact, Trait("Type", "Acceptance")]
         private void Should_Add_Pokemon_Favorite()
         {
             // Create User
