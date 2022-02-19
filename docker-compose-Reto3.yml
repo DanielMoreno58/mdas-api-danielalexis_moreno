@@ -2,8 +2,8 @@ version: '3.6'
 
 services:
 
- pokemons:
-    image: pokemons
+ epokemon.pokemons:
+    image: mdas-api-g2.pokemons
     container_name: pokemon
     build:
       context: .
@@ -14,8 +14,8 @@ services:
     networks:
       - epokemonnet
 
- users:
-    image: userfavorites
+ epokemon.users:
+    image: mdas-api-g2.userfavorites
     container_name: userfavorite
     build:
       context: .
@@ -26,8 +26,8 @@ services:
     networks:
       - epokemonnet
 
- tests:
-    image: tests
+ epokemon.tests:
+    image: mdas-api-g2.tests
     container_name: test
     build:
       context: .
