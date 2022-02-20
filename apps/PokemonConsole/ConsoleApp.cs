@@ -38,14 +38,14 @@ namespace PokemonConsole
             }
             catch (Exception e)
             {
-                if (e.InnerException is PokemonNotFoundException)
+                if (e is PokemonNotFoundException || (e.InnerException != null && e.InnerException is PokemonNotFoundException))
                 {
-                    Console.WriteLine(e.Message);
+                    Console.WriteLine(e.InnerException is null ? e.Message : e.InnerException.Message);
                     return;
                 }
-                if (e.InnerException is TypeRepositoryIsNotRespondingException)
+                if (e is TypeRepositoryIsNotRespondingException || (e.InnerException != null && e.InnerException is TypeRepositoryIsNotRespondingException))
                 {
-                    Console.WriteLine(e.Message);
+                    Console.WriteLine(e.InnerException is null ? e.Message : e.InnerException.Message);
                     return;
                 }
                 Console.WriteLine("Oops, something has gone wrong. Try again later.");
