@@ -8,11 +8,11 @@ namespace Pokemon.Type.Infrastructure
         {
             Types = new List<PokeApiTypesDto>();
         }
-        public PokeApiPokemonDto(int id,string name, string url):this()
+        public PokeApiPokemonDto(int id, string name, string url) : this()
         {
             Id = id;
             Name = name;
-            Url = url;            
+            Url = url;
         }
         public int Id { get; set; }
         public string Name { get; set; }

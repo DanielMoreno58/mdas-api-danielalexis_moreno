@@ -1,6 +1,7 @@
-﻿namespace Users.User.Infraestructure
+﻿namespace Users.User.Infrastructure
 {
-    public partial class UserContext     {
+    public partial class UserContext
+    {
 
         public UserContext()
         {
@@ -9,8 +10,8 @@
         }
 
         private IEnumerable<Domain.User> Users { get; set; }
-        private IEnumerable<Domain.PokemonFavorite> Favorites { get; set; }        
-        
+        private IEnumerable<Domain.PokemonFavorite> Favorites { get; set; }
+
         public List<TEntity> Set<TEntity>()
         {
             List<TEntity> entities = new List<TEntity>();

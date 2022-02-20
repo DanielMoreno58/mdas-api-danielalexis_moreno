@@ -6,7 +6,7 @@
         {
 
         }
-        public PokeApiTypesDto(PokeApiTypeDto type):this()
+        public PokeApiTypesDto(PokeApiTypeDto type) : this()
         {
             Type = type;
         }

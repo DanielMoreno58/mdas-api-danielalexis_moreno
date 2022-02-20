@@ -1,10 +1,10 @@
 ﻿using System;
 using Users.User.Domain;
-using Users.User.Infraestructure;
+using Users.User.Infrastructure;
 
 namespace UsersTest.Domain
 {
-    public class UserIdMother 
+    public class UserIdMother
     {
         public static UserId Random()
         {

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Pokemon.Pokemon.Infrastructure;
+﻿using Pokemon.Pokemon.Infrastructure;
 
 namespace PokemonTests.Infrastructure.Dto
 {
@@ -17,7 +12,7 @@ namespace PokemonTests.Infrastructure.Dto
             int weight = Faker.RandomNumber.Next();
 
             PokeApiPokemonDto pokeApiPokemonDto = new PokeApiPokemonDto(id, name, height, weight);
-            
+
             return pokeApiPokemonDto;
         }
     }

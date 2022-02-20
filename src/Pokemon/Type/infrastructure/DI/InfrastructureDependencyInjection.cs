@@ -1,12 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Pokemon.Type.Domain;
-using Pokemon.Type.Infrastructure;
 
 namespace Pokemon.Type.Infrastructure;
 
-public static class InfraestructureDependencyInjection
+public static class InfrastructureDependencyInjection
 {
-    public static IServiceCollection AddTypeInfraestructure(this IServiceCollection services)
+    public static IServiceCollection AddTypeInfrastructure(this IServiceCollection services)
     {
         services.AddScoped<ITypeRepository, PokeApiTypeRepository>();
 

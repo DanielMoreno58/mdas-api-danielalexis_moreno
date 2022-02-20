@@ -4,7 +4,7 @@ using System.Net.Http.Headers;
 using Xunit;
 using System.Text;
 
-namespace UsersTest.infraestructure
+namespace UsersTest.Infrastructure
 {
     public class CreateUserTest
     {

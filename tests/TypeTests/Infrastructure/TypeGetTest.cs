@@ -1,10 +1,7 @@
-using System;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using Xunit;
-using System.Text;
 
-namespace TypeTests.infraestructure
+namespace TypeTests.Infrastructure
 {
     public class TypeGetTest
     {

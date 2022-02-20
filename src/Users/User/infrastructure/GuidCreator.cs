@@ -1,6 +1,6 @@
-﻿namespace Users.User.Infraestructure
+﻿namespace Users.User.Infrastructure
 {
-    public  class GuidCreator
+    public class GuidCreator
     {
         public static Guid Execute()
         {

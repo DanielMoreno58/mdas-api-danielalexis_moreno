@@ -1,13 +1,9 @@
-using System.Collections.Generic;
 using System;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
-using Xunit;
 using System.Text;
-using System.Web.Http;
+using Xunit;
 
-namespace UsersTest.infraestructure
+namespace UsersTest.Infrastructure
 {
     public class AddPokemonFavoriteTest
     {
@@ -15,7 +11,7 @@ namespace UsersTest.infraestructure
         private static HttpClient client = new HttpClient();
 
         private CreateUserTest createUserTest = new CreateUserTest();
-        
+
         [Fact, Trait("Type", "Acceptance")]
         private void Should_Add_Pokemon_Favorite()
         {
@@ -27,7 +23,7 @@ namespace UsersTest.infraestructure
             string postUrlFavorite = "http://userfavorite:80/api/v1/users/pokemonfavorite";
             HttpRequestMessage requestFavorite = new HttpRequestMessage(HttpMethod.Post, postUrlFavorite);
             Guid pokemonId = Guid.NewGuid();
-            requestFavorite.Content = new StringContent("{\"userId\":\""+userTest.Item2+"\",\"pokemonId\":\""+pokemonId+"\"}",
+            requestFavorite.Content = new StringContent("{\"userId\":\"" + userTest.Item2 + "\",\"pokemonId\":\"" + pokemonId + "\"}",
                                                         Encoding.UTF8,
                                                         "application/json");
             var response = httpClient.SendAsync(requestFavorite).GetAwaiter().GetResult();

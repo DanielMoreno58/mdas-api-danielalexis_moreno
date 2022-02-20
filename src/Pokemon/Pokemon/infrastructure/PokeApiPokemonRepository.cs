@@ -22,7 +22,7 @@ namespace Pokemon.Pokemon.Infrastructure
         public bool Exists(PokemonId pokemonId)
         {
             var exists = ExistsAsync(pokemonId.Value).Result;
-            
+
             return exists;
         }
 

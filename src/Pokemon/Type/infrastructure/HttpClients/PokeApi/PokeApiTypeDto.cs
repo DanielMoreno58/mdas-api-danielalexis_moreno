@@ -6,7 +6,7 @@
         {
 
         }
-        public PokeApiTypeDto(string name, string url):this()
+        public PokeApiTypeDto(string name, string url) : this()
         {
             Name = name;
             Url = url;

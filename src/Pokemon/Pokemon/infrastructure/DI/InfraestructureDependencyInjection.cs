@@ -3,9 +3,9 @@ using Pokemon.Pokemon.Domain;
 
 namespace Pokemon.Pokemon.Infrastructure;
 
-public static class InfraestructureDependencyInjection
+public static class infrastructureDependencyInjection
 {
-    public static IServiceCollection AddPokemonInfraestructure(this IServiceCollection services)
+    public static IServiceCollection AddPokemoninfrastructure(this IServiceCollection services)
     {
         services.AddScoped<IPokemonRepository, PokeApiPokemonRepository>();
 

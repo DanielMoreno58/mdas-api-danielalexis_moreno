@@ -25,7 +25,7 @@ namespace PokemonConsole
                 {
                     services.AddTypeDomain();
                     services.AddTypeApplication();
-                    services.AddTypeInfraestructure();
+                    services.AddTypeInfrastructure();
                     services.AddHttpClient<PokeApiHttpClient>();
                     services.AddTransient<ConsoleApp>();
                 })

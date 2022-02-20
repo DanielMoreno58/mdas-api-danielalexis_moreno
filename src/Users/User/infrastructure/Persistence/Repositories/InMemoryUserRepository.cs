@@ -1,26 +1,26 @@
 ﻿using Users.User.Domain;
 
-namespace Users.User.Infraestructure;
+namespace Users.User.Infrastructure;
 
 public class InMemoryUserRepository : IUserRepository
-{    
+{
     private readonly List<Domain.User> _users;
-  
+
     public InMemoryUserRepository(UserContext context)
-    {        
+    {
         _users = context.Set<Domain.User>();
     }
 
     public void Save(Domain.User user)
     {
-        Upsert(user);        
+        Upsert(user);
     }
 
     public Domain.User Find(UserId userId)
     {
         Domain.User user = FindById(userId.Value);
-        
-        if(user== null)
+
+        if (user == null)
         {
             throw new UserDoesNotExistException();
         }
@@ -30,7 +30,7 @@ public class InMemoryUserRepository : IUserRepository
 
     public bool Exists(UserId userId)
     {
-        return _users.Where(u=>u.Id.Value == userId.Value).Any();
+        return _users.Where(u => u.Id.Value == userId.Value).Any();
     }
 
     #region Metodos privados
@@ -49,7 +49,7 @@ public class InMemoryUserRepository : IUserRepository
 
     private void Update(Domain.User user)
     {
-        int index = FindIndex(user.Id);        
+        int index = FindIndex(user.Id);
         _users[index] = user;
     }
 
@@ -76,6 +76,6 @@ public class InMemoryUserRepository : IUserRepository
             Update(user);
         }
     }
- 
+
     #endregion
 }

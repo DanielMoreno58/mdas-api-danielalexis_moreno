@@ -8,13 +8,13 @@ builder.Services.AddControllers();
 
 builder.Services.AddPokemonApplication();
 builder.Services.AddPokemonDomain();
-builder.Services.AddPokemonInfraestructure();
+builder.Services.AddPokemoninfrastructure();
 
 builder.Services.AddHttpClient();
 
 builder.Services.AddTypeApplication();
 builder.Services.AddTypeDomain();
-builder.Services.AddTypeInfraestructure();
+builder.Services.AddTypeInfrastructure();
 
 builder.Services.AddHttpClient<PokeApiHttpClient>();
 

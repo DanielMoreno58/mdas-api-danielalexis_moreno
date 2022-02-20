@@ -2,7 +2,6 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Xunit;
-using System.Text;
 
 
 namespace PokemonTests.Infrastructure

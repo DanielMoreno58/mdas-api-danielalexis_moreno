@@ -17,6 +17,6 @@ namespace Pokemon.Type.Infrastructure
             List<Domain.Type> types = HttpAdapter.PokeApiTypeDtoListToTypesList(pokemon);
             return types;
         }
-    
+
     }
 }

@@ -2,13 +2,8 @@
 using Pokemon.Pokemon.Infrastructure;
 using PokemonTests.Infrastructure.Dto;
 using RichardSzalay.MockHttp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace PokemonTests.Infrastructure
@@ -29,7 +24,7 @@ namespace PokemonTests.Infrastructure
             //When
             var pokemon = pokeApiPokemonRepository.Find(new PokemonId(pokeApiPokemonDto.Id));
             //Then
-            Assert.Equal(pokeApiPokemonDto.Id, pokemon.PokemonId.Value);            
+            Assert.Equal(pokeApiPokemonDto.Id, pokemon.PokemonId.Value);
         }
         [Fact]
         public void Should_Exists_A_Pokemon_By_PokemonId()

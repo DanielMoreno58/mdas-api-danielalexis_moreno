@@ -1,13 +1,9 @@
 ﻿using Pokemon.Type.Domain;
 using Pokemon.Type.Infrastructure;
 using RichardSzalay.MockHttp;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using TypeTests.Infrastructure.HttpClients.PokeApi;
 using Xunit;
 
@@ -22,7 +18,7 @@ namespace TypeTests.Infrastructure
             string pokemonUrl = "https://pokeapi.co/api/v2/pokemon";
             var mockHttp = new MockHttpMessageHandler();
             var pokeApiPokemonDto = PokeApiPokemonDtoMother.Random();
-            var response = JsonSerializer.Serialize(pokeApiPokemonDto);             
+            var response = JsonSerializer.Serialize(pokeApiPokemonDto);
             mockHttp.When($"{pokemonUrl}/{pokeApiPokemonDto.Name}").Respond("application/json", response);
             var httpClient = new HttpClient(mockHttp);
             var pokeApiHttpClient = new PokeApiHttpClient(httpClient);
@@ -30,7 +26,7 @@ namespace TypeTests.Infrastructure
             //When
             var types = pokeApiTypeRepository.FindByPokemonName(new PokemonName(pokeApiPokemonDto.Name));
             //Then
-            Assert.Equal(pokeApiPokemonDto.Types.Count(),types.Count());
+            Assert.Equal(pokeApiPokemonDto.Types.Count(), types.Count());
             Assert.Equal(pokeApiPokemonDto.Types.First().Type.Name, types.First().Name.Value);
         }
     }

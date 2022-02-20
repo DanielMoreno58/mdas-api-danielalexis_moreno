@@ -1,7 +1,7 @@
 using Moq;
 using Users.User.Application;
 using Users.User.Domain;
-using Users.User.Infraestructure;
+using Users.User.Infrastructure;
 using UsersTest.Domain;
 using Xunit;
 

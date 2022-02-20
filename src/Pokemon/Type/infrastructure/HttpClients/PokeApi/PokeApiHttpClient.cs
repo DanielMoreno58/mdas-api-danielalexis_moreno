@@ -12,7 +12,7 @@ namespace Pokemon.Type.Infrastructure
     {
         private HttpClient _pokemonClient;
         private string pokemonUrl = "https://pokeapi.co/api/v2/pokemon/";
-   
+
         public PokeApiHttpClient(HttpClient pokemonClient)
         {
             pokemonClient.BaseAddress = new Uri(pokemonUrl);
