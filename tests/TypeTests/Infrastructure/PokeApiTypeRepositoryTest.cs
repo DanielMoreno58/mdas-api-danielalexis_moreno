@@ -23,8 +23,10 @@ namespace TypeTests.Infrastructure
             var httpClient = new HttpClient(mockHttp);
             var pokeApiHttpClient = new PokeApiHttpClient(httpClient);
             var pokeApiTypeRepository = new PokeApiTypeRepository(pokeApiHttpClient);
+
             //When
             var types = pokeApiTypeRepository.FindByPokemonName(new PokemonName(pokeApiPokemonDto.Name));
+
             //Then
             Assert.Equal(pokeApiPokemonDto.Types.Count(), types.Count());
             Assert.Equal(pokeApiPokemonDto.Types.First().Type.Name, types.First().Name.Value);

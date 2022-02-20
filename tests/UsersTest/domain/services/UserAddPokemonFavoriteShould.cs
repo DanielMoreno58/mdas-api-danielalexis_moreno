@@ -31,11 +31,11 @@ namespace UsersTest.Domain
         [Fact]
         public void Throw_An_Exception_When_User_Does_Not_Exists()
         {
+            //Given
             var userRepository = new Mock<IUserRepository>();
             userRepository.Setup(_ => _.Exists(It.IsAny<UserId>())).Returns(false);
             _userAddPokemonFavorite = new UserAddPokemonFavorite(userRepository.Object);
 
-            //Given
             var userId = UserIdMother.Random();
             var pokemonFavorite = PokemonFavoriteMother.Random();
 

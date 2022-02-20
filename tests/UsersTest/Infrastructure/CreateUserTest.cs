@@ -20,6 +20,7 @@ namespace UsersTest.Infrastructure
 
         public Tuple<HttpResponseMessage, Guid> Create_New_User()
         {
+            //Given
             HttpClient httpClient = new HttpClient();
             string postUrl = "http://userfavorite:80/api/v1/users";
             client.DefaultRequestHeaders.Accept.Clear();
@@ -29,7 +30,11 @@ namespace UsersTest.Infrastructure
             request.Content = new StringContent("{\"name\":\"Jonh Doe\",\"id\":\"" + userId + "\"}",
                                                 Encoding.UTF8,
                                                 "application/json");
+
+            //When
             var response = httpClient.SendAsync(request).GetAwaiter().GetResult();
+
+            //Then
             return Tuple.Create(response, userId);
         }
     }

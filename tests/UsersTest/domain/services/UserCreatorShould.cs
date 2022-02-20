@@ -11,11 +11,11 @@ namespace UsersTest.Domain
         [Fact]
         public void Create_A_User()
         {
+            //Given
             var userRepository = new Mock<IUserRepository>();
             userRepository.Setup(_ => _.Exists(It.IsAny<UserId>())).Returns(false);
             _userCreator = new UserCreator(userRepository.Object);
 
-            //Given
             var userId = UserIdMother.Random();
             var userName = UserNameMother.Random();
 
@@ -23,23 +23,22 @@ namespace UsersTest.Domain
             _userCreator.Execute(userId, userName);
 
             //Then
-            userRepository.Verify(v => v.Save(It.IsAny<User>())); 
+            userRepository.Verify(v => v.Save(It.IsAny<User>()));
         }
 
         [Fact]
         public void Throw_An_Exception_When_User_Already_Exists()
         {
+            //Given
             var userRepository = new Mock<IUserRepository>();
             userRepository.Setup(_ => _.Exists(It.IsAny<UserId>())).Returns(true);
             _userCreator = new UserCreator(userRepository.Object);
 
-            //Given
             var userId = UserIdMother.Random();
             var userName = UserNameMother.Random();
 
             //When - Then
-            Assert.Throws<UserAlreadyExistsException>(() => _userCreator.Execute(userId, userName)); 
+            Assert.Throws<UserAlreadyExistsException>(() => _userCreator.Execute(userId, userName));
         }
     }
 }
- 

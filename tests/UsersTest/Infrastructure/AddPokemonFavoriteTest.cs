@@ -15,19 +15,21 @@ namespace UsersTest.Infrastructure
         [Fact, Trait("Type", "Acceptance")]
         private void Should_Add_Pokemon_Favorite()
         {
-            // Create User
+            // Given
             HttpClient httpClient = new HttpClient();
             var userTest = createUserTest.Create_New_User();
 
-            // Add pokemon Favorite
             string postUrlFavorite = "http://userfavorite:80/api/v1/users/pokemonfavorite";
             HttpRequestMessage requestFavorite = new HttpRequestMessage(HttpMethod.Post, postUrlFavorite);
             Guid pokemonId = Guid.NewGuid();
             requestFavorite.Content = new StringContent("{\"userId\":\"" + userTest.Item2 + "\",\"pokemonId\":\"" + pokemonId + "\"}",
                                                         Encoding.UTF8,
                                                         "application/json");
+
+            //When
             var response = httpClient.SendAsync(requestFavorite).GetAwaiter().GetResult();
 
+            //Then
             Assert.True(response.IsSuccessStatusCode);
         }
     }
