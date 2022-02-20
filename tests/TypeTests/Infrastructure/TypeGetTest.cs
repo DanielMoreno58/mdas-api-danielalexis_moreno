@@ -1,4 +1,5 @@
 using System.Net.Http;
+using System.Text;
 using Xunit;
 
 namespace TypeTests.Infrastructure
@@ -11,7 +12,7 @@ namespace TypeTests.Infrastructure
         {
             //Given
             HttpClient httpClient = new HttpClient();
-            string url = "http://pokemon:80/api/v1/TypeGet";
+            string url = "https://pokemon:80/api/v1/TypeGet/charizard";
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url);
 
             //When
