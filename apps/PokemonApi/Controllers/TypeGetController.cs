@@ -4,7 +4,7 @@ using Pokemon.Type.Domain;
 
 namespace PokemonApi.Controllers
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/v1")]
     [ApiController]
     public class TypeGetController : ControllerBase
     {
@@ -15,7 +15,7 @@ namespace PokemonApi.Controllers
             _getTypesByPokemonNameUseCase = getTypesByPokemonNameUseCase;
         }
 
-        [HttpGet("{name}")]
+        [HttpGet("type/{name}")]
         public IActionResult Get(string name)
         {
             if (name == string.Empty)

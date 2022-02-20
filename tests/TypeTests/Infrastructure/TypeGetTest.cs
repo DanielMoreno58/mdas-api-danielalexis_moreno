@@ -1,5 +1,5 @@
 using System.Net.Http;
-using System.Text;
+using System.Net.Http.Headers;
 using Xunit;
 
 namespace TypeTests.Infrastructure
@@ -12,7 +12,9 @@ namespace TypeTests.Infrastructure
         {
             //Given
             HttpClient httpClient = new HttpClient();
-            string url = "https://pokemon:80/api/v1/TypeGet/charizard";
+            string url = "http://pokemon:80/api/v1/type/charizard";
+            httpClient.DefaultRequestHeaders.Accept.Clear();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url);
 
             //When
