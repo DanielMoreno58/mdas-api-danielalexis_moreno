@@ -1,10 +1,5 @@
-﻿using Moq;
-using Pokemon.Type.Infraestucture;
-using System;
+﻿using Pokemon.Type.Infrastructure;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TypeTests.Infrastructure.HttpClients.PokeApi
 {
@@ -24,7 +19,7 @@ namespace TypeTests.Infrastructure.HttpClients.PokeApi
 
         private static List<PokeApiTypesDto> CreateTypes()
         {
-            int typesCount = Faker.RandomNumber.Next(1,10);
+            int typesCount = Faker.RandomNumber.Next(1, 10);
             List<PokeApiTypesDto> types = new List<PokeApiTypesDto>();
 
             for (int i = 0; i < typesCount; i++)

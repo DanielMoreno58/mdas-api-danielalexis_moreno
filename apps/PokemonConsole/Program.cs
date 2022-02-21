@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Pokemon.Type.Infraestucture;
+using Pokemon.Type.Infrastructure;
 using System;
 using System.Threading.Tasks;
 
@@ -25,7 +25,7 @@ namespace PokemonConsole
                 {
                     services.AddTypeDomain();
                     services.AddTypeApplication();
-                    services.AddTypeInfraestructure();
+                    services.AddTypeInfrastructure();
                     services.AddHttpClient<PokeApiHttpClient>();
                     services.AddTransient<ConsoleApp>();
                 })

@@ -1,7 +1,7 @@
 using Moq;
 using Users.User.Application;
 using Users.User.Domain;
-using Users.User.Infraestructure;
+using Users.User.Infrastructure;
 using Xunit;
 
 namespace UsersTest.Application
@@ -18,7 +18,7 @@ namespace UsersTest.Application
             var name = It.IsAny<string>();
 
             //When
-            createUserUseCase.Execute(userId,name);
+            createUserUseCase.Execute(userId, name);
 
             //Then
             userCreator.Verify(v => v.Execute(It.IsAny<UserId>(), It.IsAny<UserName>()));

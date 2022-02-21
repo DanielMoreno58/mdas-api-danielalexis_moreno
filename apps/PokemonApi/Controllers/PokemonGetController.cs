@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Pokemon.Pokemon.Application;
 using Pokemon.Pokemon.Domain;
-using PokemonNotFoundException = Pokemon.Pokemon.Domain.PokemonNotFoundException;
 
 namespace PokemonApi.Controllers
 {
@@ -32,10 +31,13 @@ namespace PokemonApi.Controllers
             }
             catch (Exception e)
             {
-                if (e.InnerException is PokemonNotFoundException)
-                    return NotFound(e.Message);
-                if (e.InnerException is PokemonRepositoryIsNotRespondingException)
-                    return Conflict(e.Message);
+                if (e is PokemonNotFoundException || (e.InnerException != null && e.InnerException is PokemonNotFoundException))
+                {
+                    return NotFound(e.InnerException is null ? e.Message : e.InnerException.Message);
+                }
+                if (e is PokemonRepositoryIsNotRespondingException || (e.InnerException != null && e.InnerException is PokemonRepositoryIsNotRespondingException))
+                    return Conflict(e.InnerException is null ? e.Message : e.InnerException.Message);
+
                 return NotFound("Oops, something has gone wrong. Try again later.");
             }
         }

@@ -1,5 +1,5 @@
 ﻿using Users.User.Domain;
-using Users.User.Infraestructure;
+using Users.User.Infrastructure;
 
 namespace UsersTest.Domain
 {

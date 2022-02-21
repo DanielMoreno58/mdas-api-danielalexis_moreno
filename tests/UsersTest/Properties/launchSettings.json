@@ -2,9 +2,6 @@
   "profiles": {
     "UsersTest": {
       "commandName": "Project"
-    },
-    "Docker": {
-      "commandName": "Docker"
     }
   }
 }
