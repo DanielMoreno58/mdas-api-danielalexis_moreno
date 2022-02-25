@@ -10,8 +10,9 @@ namespace Pokemon.Pokemon.Infrastructure
             var pokemonName = new PokemonName(pokeApiPokemonDto.Name);
             var pokemonHeight = new PokemonHeight(pokeApiPokemonDto.Height);
             var pokemonWeight = new PokemonWeight(pokeApiPokemonDto.Weight);
+            var pokemonCountFavorite = new PokemonCounterFavorite(1);
 
-            return Domain.Pokemon.Create(pokemonId, pokemonName, pokemonHeight, pokemonWeight);
+            return Domain.Pokemon.Create(pokemonId, pokemonName, pokemonHeight, pokemonWeight, pokemonCountFavorite);
         }
 
     }

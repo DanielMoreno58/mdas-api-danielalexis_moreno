@@ -13,7 +13,7 @@ namespace PokemonApi
                 Name = pokemon.PokemonName.Value,
                 Height = pokemon.PokemonHeight.Value,
                 Weight = pokemon.PokemonWeight.Value,
-                CounterPokemonFavorite = pokemon.CounterPokemonFavorite.Value
+                CounterPokemonFavorite = pokemon.PokemonCounterFavorite.Value
             };
 
             return getPokemonDto;

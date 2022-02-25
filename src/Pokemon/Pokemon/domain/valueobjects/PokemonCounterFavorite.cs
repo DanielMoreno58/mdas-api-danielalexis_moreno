@@ -1,10 +1,10 @@
 namespace Pokemon.Pokemon.Domain
 {
-    public class CounterPokemonFavorite
+    public class PokemonCounterFavorite
     {
         public int Value { get; }
 
-        public CounterPokemonFavorite(int id)
+        public PokemonCounterFavorite(int id)
         {
             Value = id;
         }
