@@ -10,6 +10,7 @@ public class PokemonFavorite
 
     public static PokemonFavorite Create(  PokemonId pokemonId )
     {
+        PokemonFavoriteAddedEvent pokemonFavoriteAddedEvent = new PokemonFavoriteAddedEvent("add", pokemonId);
         return new PokemonFavorite( pokemonId);
     }
 
