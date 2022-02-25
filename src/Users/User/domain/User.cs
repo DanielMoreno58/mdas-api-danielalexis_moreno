@@ -21,5 +21,9 @@
         public UserId Id => _userId;
         public UserName UserName => _userName;
         public PokemonFavoritesCollection PokemonFavorites => _pokemonFavorites;
+
+        public void AddPokemonFavorite(PokemonFavorite favorite){
+            _pokemonFavorites.Add(favorite);
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace UsersTest.Domain
             var pokemonFavoritesCollection =  PokemonFavoritesCollectionMother.Random(pokemonFavorite);
 
             //When - Then
-            Assert.Throws<PokemonFavoriteAlreadyExistException>(() => pokemonFavoritesCollection.AddPokemonFavorite( pokemonFavorite));
+            Assert.Throws<PokemonFavoriteAlreadyExistException>(() => pokemonFavoritesCollection.Add( pokemonFavorite));
         }
 
         [Fact]
@@ -26,7 +26,7 @@ namespace UsersTest.Domain
             var pokemonFavoritesCollection = PokemonFavoritesCollectionMother.Random();
 
             //When
-            pokemonFavoritesCollection.AddPokemonFavorite(pokemonFavorite);
+            pokemonFavoritesCollection.Add(pokemonFavorite);
 
             //Then
             Assert.Contains<PokemonFavorite>(pokemonFavorite, pokemonFavoritesCollection);

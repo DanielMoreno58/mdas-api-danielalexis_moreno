@@ -9,14 +9,14 @@ namespace UsersTest.Domain
         {
             var pokemonFavorite = PokemonFavoriteMother.Random();
             var pokemonFavoritesCollection = new PokemonFavoritesCollection();
-            pokemonFavoritesCollection.AddPokemonFavorite(pokemonFavorite);
+            pokemonFavoritesCollection.Add(pokemonFavorite);
             return pokemonFavoritesCollection;
         }
 
         public static PokemonFavoritesCollection Random(PokemonFavorite pokemonFavorite)
         {
             var pokemonFavoritesCollection = new PokemonFavoritesCollection();
-            pokemonFavoritesCollection.AddPokemonFavorite(pokemonFavorite);
+            pokemonFavoritesCollection.Add(pokemonFavorite);
             return pokemonFavoritesCollection;
         }
     }
