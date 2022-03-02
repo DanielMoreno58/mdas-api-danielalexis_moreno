@@ -7,7 +7,7 @@ namespace UsersTest.Domain
     {
         public static PokemonId Random()
         {
-            return new PokemonId(GuidCreator.Execute());
+            return new PokemonId(Faker.RandomNumber.Next(0, 100));
         }
     }
 
