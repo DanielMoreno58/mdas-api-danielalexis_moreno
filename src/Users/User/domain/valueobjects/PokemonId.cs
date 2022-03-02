@@ -2,9 +2,9 @@
 {
     public readonly struct PokemonId : IEquatable<PokemonId>
     {
-        public Guid Value { get; }
+        public int Value { get; }
 
-        public PokemonId(Guid id)
+        public PokemonId(int id)
         {
             Value = id;
         }
