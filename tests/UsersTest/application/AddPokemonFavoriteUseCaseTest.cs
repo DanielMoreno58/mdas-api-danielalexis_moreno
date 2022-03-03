@@ -17,10 +17,12 @@ namespace UsersTest.Application
             var userId = UserIdMother.Random(userGuid);
             var user = UserMother.Random(userId, It.IsAny<UserName>());
             var pokemonId = PokemonIdMother.Random();
+            var userFinder = new Mock<UserFinder>(It.IsAny<IUserRepository>());
+            userFinder.Setup(x => x.Execute(It.IsAny<UserId>())).Returns(user);
             var userAddPokemonFavorite = new Mock<UserAddPokemonFavorite>(It.IsAny<IUserRepository>());
             userAddPokemonFavorite.Setup(_ => _.Execute(It.IsAny<UserId>(), It.IsAny<PokemonFavorite>()));
             var pokemonFavoritePublisher = new Mock<AddPokemonFavoritePublisher>();
-            var addPokemonFavoriteUseCase = new AddPokemonFavoriteUseCase(userAddPokemonFavorite.Object, pokemonFavoritePublisher.Object);
+            var addPokemonFavoriteUseCase = new AddPokemonFavoriteUseCase(userAddPokemonFavorite.Object, pokemonFavoritePublisher.Object, userFinder.Object);
 
             //When
             addPokemonFavoriteUseCase.Execute(user.Id.Value, pokemonId.Value);

@@ -12,14 +12,15 @@ namespace Users.User.Application
 
         public readonly UserFinder _userFinder;
 
-        private RabbitMq rabbitMq;
+        private RabbitMq _rabbitMq;
 
         public AddPokemonFavoriteUseCase(UserAddPokemonFavorite userAddPokemonFavorite, AddPokemonFavoritePublisher addPokemonFavoritePublisher, 
-        UserFinder userFinder)
+        UserFinder userFinder, RabbitMq rabbitMq)
         {
             _userAddPokemonFavorite = userAddPokemonFavorite;
             _addPokemonFavoritePublisher = addPokemonFavoritePublisher;
             _userFinder = userFinder;
+            _rabbitMq = rabbitMq;
         }
 
         public void Execute(Guid userIdparam, int pokemonIdparam)
@@ -30,8 +31,7 @@ namespace Users.User.Application
             var pokemonFavorite = PokemonFavorite.Create(pokemonId);
 
             _userAddPokemonFavorite.Execute(userId, pokemonFavorite);
-            Console.WriteLine("llego aqui");
-            rabbitMq.Publish(Exchange.DomainEvents, Queue.CounterFavorite, user.GetAllDomainEvents()).Wait();
+            _rabbitMq.Publish(Exchange.DomainEvents, Queue.CounterFavorite, user.GetAllDomainEvents()).Wait();
 
         }
     }
