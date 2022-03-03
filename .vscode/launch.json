@@ -1,15 +1,17 @@
 {
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": ".NET Core Launch (web)",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/apps/PokemonApi/bin/Debug/net6.0/PokemonApi.dll",
+            "program": "${workspaceFolder}/apps/UserApi/bin/Debug/net6.0/UserApi.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/apps/PokemonApi",
+            "cwd": "${workspaceFolder}/apps/UserApi",
             "stopAtEntry": false,
+            "requireExactSource": false,
             "serverReadyAction": {
                 "action": "openExternally",
                 "pattern": "\\bNow listening on:\\s+(https?://\\S+)"

@@ -15,6 +15,7 @@ builder.Services.AddHttpClient();
 builder.Services.AddTypeApplication();
 builder.Services.AddTypeDomain();
 builder.Services.AddTypeInfrastructure();
+//builder.Services.AddShared();
 
 builder.Services.AddHttpClient<PokeApiHttpClient>();
 

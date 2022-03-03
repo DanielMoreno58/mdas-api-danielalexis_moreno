@@ -1,4 +1,5 @@
 ﻿using Users.User.Domain;
+using Shared.Events.Domain;
 
 namespace Users.User.Application
 {
