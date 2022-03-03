@@ -1,3 +1,5 @@
+using System;
+
 namespace Users.User.Domain
 {
     public class UserAlreadyExistsException : Exception

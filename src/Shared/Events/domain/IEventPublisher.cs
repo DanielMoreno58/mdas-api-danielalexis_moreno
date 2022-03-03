@@ -2,9 +2,9 @@ namespace Shared.Events.Domain
 {
     public interface IEventPublisher
     {
-        Task Publish<Event>(string exchangeName, string queueName, Event @event);
+        Task Publish<T>(string exchangeName, string queueName, T @event)  where T : DomainEvent;
 
-        Task Consume<Event>(string exchangeName, string queueName, string eventKey, Action<Event> onEventReceived);
+        Task Consume<T>(string exchangeName, string queueName, string eventKey, Action<T> onEventReceived) where T : DomainEvent;
 
     }
 }

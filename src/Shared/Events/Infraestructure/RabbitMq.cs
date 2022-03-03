@@ -15,9 +15,9 @@ namespace Shared.Events.Infraestructure
             _channel = channel;
         }
         
-        public async Task Publish<Event>(string exchangeName, string queue, Event @event) => await SendEvent(exchangeName, queue, @event);
+        public async Task Publish<T>(string exchangeName, string queue, T @event)  where T : DomainEvent => await SendEvent(exchangeName, queue, @event);
         
-        public async Task Publish<Event>(string exchangeName, string queue, List<Event> events)
+        public async Task Publish<T>(string exchangeName, string queue, List<T> events) where T : DomainEvent
         {
             foreach (var @event in events)
             {
@@ -25,7 +25,7 @@ namespace Shared.Events.Infraestructure
             }
         }
         
-        public async Task Consume<Event>(string exchangeName, string queue, string type, Action<Event> onMessage) 
+        public async Task Consume<T>(string exchangeName, string queue, string type, Action<T> onMessage) where T : DomainEvent
         {
             _channel.ExchangeDeclare(exchangeName, ExchangeType.Direct);
             _channel.QueueDeclare(queue, true, false, false, null);
@@ -34,7 +34,7 @@ namespace Shared.Events.Infraestructure
             consumer.Received += async (model, ea) =>
             {
                 var json = Encoding.UTF8.GetString(ea.Body.Span);
-                var item = JsonSerializer.Deserialize<Event>(json);
+                var item = JsonSerializer.Deserialize<T>(json);
                 onMessage(item);
                 await Task.Yield();
             };
@@ -43,16 +43,16 @@ namespace Shared.Events.Infraestructure
         }
 
 
-        private async Task SendEvent<Event>(string exchangeName, string queue, Event @event)
+        private async Task SendEvent<T>(string exchangeName, string queue, T domainEvent) where T : DomainEvent
         {
             await Task.Run(() => {
                 _channel.ExchangeDeclare(exchangeName, ExchangeType.Direct);
                 _channel.QueueDeclare(queue, true, false, false, null);
-                _channel.QueueBind(queue, exchangeName, "@event.Type", null);
+                _channel.QueueBind(queue, exchangeName, domainEvent.Type, null);
                 IBasicProperties properties = _channel.CreateBasicProperties();
-                //properties.Type = @event.GetType();
-                byte[] output = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(@event));
-                _channel.BasicPublish(exchangeName, "@event.Type", properties, output);
+                properties.Type = domainEvent.Type;
+                byte[] output = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(domainEvent.Type));
+                _channel.BasicPublish(exchangeName, domainEvent.Type, properties, output);
             });
         }
     }

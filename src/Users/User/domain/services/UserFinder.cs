@@ -1,4 +1,5 @@
-namespace Users.User.Domain {
+namespace Users.User.Domain 
+{
     public class UserFinder {
         private readonly IUserRepository _userRepository;
 

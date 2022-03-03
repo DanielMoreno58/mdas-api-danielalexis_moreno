@@ -1,4 +1,6 @@
-﻿namespace Users.User.Infrastructure
+﻿using System;
+
+namespace Users.User.Infrastructure
 {
     public class GuidCreator
     {

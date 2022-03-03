@@ -1,13 +1,13 @@
 
 namespace Shared.Events.Domain
 {
-    public class Event
+    public class DomainEvent
     {
-        private string AggregateId { get; }
-        private string Message { get; }
-        private string Type { get; }
+        public string AggregateId { get; }
+        public string Message { get; }
+        public string Type { get; }
 
-        public Event(string AggregateId, string Message, string Type)
+        public DomainEvent(string AggregateId, string Message, string Type)
         {
             this.AggregateId = AggregateId;
             this.Message = Message;

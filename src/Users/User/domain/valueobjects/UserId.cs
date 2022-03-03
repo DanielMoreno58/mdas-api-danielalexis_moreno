@@ -1,4 +1,6 @@
-﻿namespace Users.User.Domain
+﻿using System;
+
+namespace Users.User.Domain
 {
     public class UserId: IEquatable<UserId>
     {

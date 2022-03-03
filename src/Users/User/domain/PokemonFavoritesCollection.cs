@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+
 namespace Users.User.Domain
 {
     public class PokemonFavoritesCollection: List<PokemonFavorite> {        

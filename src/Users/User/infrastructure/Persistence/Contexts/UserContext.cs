@@ -1,4 +1,6 @@
-﻿namespace Users.User.Infrastructure
+﻿using System.Collections.Generic;
+
+namespace Users.User.Infrastructure
 {
     public partial class UserContext
     {

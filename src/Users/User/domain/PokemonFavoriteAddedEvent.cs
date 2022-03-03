@@ -1,13 +1,9 @@
-namespace Users.User.Domain;
-public class PokemonFavoriteAddedEvent
-{
-    private String _action;
-    private PokemonId _pokemonId;
+using System;
+using Shared.Events.Domain;
 
-    public PokemonFavoriteAddedEvent(String action, PokemonId pokemonId)
-    {
-        _action = action;
-        _pokemonId = pokemonId;
-    }
+namespace Users.User.Domain;
+public class PokemonFavoriteAddedEvent : DomainEvent
+{
+    public PokemonFavoriteAddedEvent (string aggregateId) : base (aggregateId, String.Empty, "pokemonfavorite.added"){}
 
 }
