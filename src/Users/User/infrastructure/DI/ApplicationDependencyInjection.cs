@@ -12,6 +12,7 @@ public static class ApplicationDependencyInjection
         services.AddTransient<AddPokemonFavoriteUseCase>();
         services.AddTransient<AddPokemonFavoritePublisher>();
         services.AddTransient<RabbitMq>();
+
         return services;
     }
 }
