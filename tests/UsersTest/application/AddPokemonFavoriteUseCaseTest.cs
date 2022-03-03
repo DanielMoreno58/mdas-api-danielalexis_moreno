@@ -3,6 +3,7 @@ using Users.User.Application;
 using Users.User.Domain;
 using Users.User.Infrastructure;
 using UsersTest.Domain;
+using Shared.Events.Infraestructure;
 using Xunit;
 
 namespace UsersTest.Application
@@ -22,7 +23,8 @@ namespace UsersTest.Application
             var userAddPokemonFavorite = new Mock<UserAddPokemonFavorite>(It.IsAny<IUserRepository>());
             userAddPokemonFavorite.Setup(_ => _.Execute(It.IsAny<UserId>(), It.IsAny<PokemonFavorite>()));
             var pokemonFavoritePublisher = new Mock<AddPokemonFavoritePublisher>();
-            var addPokemonFavoriteUseCase = new AddPokemonFavoriteUseCase(userAddPokemonFavorite.Object, pokemonFavoritePublisher.Object, userFinder.Object);
+            var eventPublisher = new Mock<RabbitMq>();
+            var addPokemonFavoriteUseCase = new AddPokemonFavoriteUseCase(userAddPokemonFavorite.Object, pokemonFavoritePublisher.Object, userFinder.Object, eventPublisher.Object);
 
             //When
             addPokemonFavoriteUseCase.Execute(user.Id.Value, pokemonId.Value);
