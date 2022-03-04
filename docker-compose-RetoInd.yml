@@ -13,7 +13,7 @@ services:
       - "3443:443"
     restart: on-failure  
     depends_on:
-      - rabbitmq3
+      - rabbitmq
     networks:
       - epokemonnet
 
@@ -41,19 +41,22 @@ services:
     networks:
       - epokemonnet
 
-  rabbitmq3:
-    container_name: "mdas-api-g2.rabbitmq"
-    image: rabbitmq:3.8-management-alpine
+  rabbitmq:
+    container_name: "rabbitmq"
+    image: rabbitmq:3.9-management
     environment:
         - RABBITMQ_DEFAULT_USER=netcoders
         - RABBITMQ_DEFAULT_PASS=netcoders
         - RABBITMQ_DEFAULT_VHOST=netcoders
     ports:
-        - '5672:5672'
-        - '5671:5671'
-        - '15672:15672'
+        - "4369:4369"
+        - "5671:5671"
+        - "5672:5672"
+        - "25672:25672"
+        - "15671:15671"
+        - "15672:15672"
     healthcheck:
-        test: ["CMD", "curl", "-f", "http://localhost:15672"]
+        test: ["CMD", "curl", "-f", "http://netcoders:netcoders@localhost:15672"]
         interval: 30s
         timeout: 10s
         retries: 5
