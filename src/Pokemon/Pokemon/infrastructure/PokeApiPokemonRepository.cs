@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using PokemonNotFoundException = Pokemon.Pokemon.Domain.PokemonNotFoundException;
+using System.Collections.Generic;
 
 namespace Pokemon.Pokemon.Infrastructure
 {
@@ -12,6 +13,7 @@ namespace Pokemon.Pokemon.Infrastructure
     {
         private readonly HttpClient _pokemonClient;
         private const string PokemonUrl = "https://pokeapi.co/api/v2/pokemon/";
+        private readonly IDictionary<int, int> _favoritesCounter = new Dictionary<int, int>();
 
         public PokeApiPokemonRepository(HttpClient httpClient)
         {
@@ -34,6 +36,12 @@ namespace Pokemon.Pokemon.Infrastructure
             return pokemon;
         }
 
+        public void Save(Domain.Pokemon pokemon)
+        {
+            _favoritesCounter[pokemon.PokemonId.Value] = pokemon.PokemonCounterFavorite.Value;
+
+        }
+
         #region Private Methods
 
         private async Task<PokeApiPokemonDto> FindByPokemonIdAsync(int pokemonId)
@@ -42,7 +50,12 @@ namespace Pokemon.Pokemon.Infrastructure
             try
             {
                 PokeApiPokemonDto pokemon = await _pokemonClient.GetFromJsonAsync<PokeApiPokemonDto>(url);
-
+                int counter = 0;
+                if (!_favoritesCounter.TryGetValue(pokemonId, out counter))
+                {
+                    _favoritesCounter[pokemonId] = counter;
+                }
+                pokemon.Counter = counter;
                 return pokemon;
             }
             catch (HttpRequestException e)

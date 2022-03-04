@@ -7,7 +7,8 @@ public static class infrastructureDependencyInjection
 {
     public static IServiceCollection AddPokemoninfrastructure(this IServiceCollection services)
     {
-        services.AddScoped<IPokemonRepository, PokeApiPokemonRepository>();
+        services.AddSingleton<IPokemonRepository, PokeApiPokemonRepository>();
+        services.AddHostedService<PokemonAddFavoriteSuscriber>();
 
         return services;
     }

@@ -2,11 +2,11 @@
 {
     public class Pokemon
     {
-        private readonly PokemonId _pokemonId;
-        private readonly PokemonName _pokemonName;
-        private readonly PokemonHeight _pokemonHeight;
-        private readonly PokemonWeight _pokemonWeight;
-        private readonly PokemonCounterFavorite _pokemonCounterFavorite;
+        private PokemonId _pokemonId;
+        private PokemonName _pokemonName;
+        private PokemonHeight _pokemonHeight;
+        private PokemonWeight _pokemonWeight;
+        private PokemonCounterFavorite _pokemonCounterFavorite;
 
         private Pokemon(PokemonId pokemonId, PokemonName pokemonName, PokemonHeight pokemonHeight, PokemonWeight pokemonWeight, PokemonCounterFavorite pokemonCounterFavorite)
         {
@@ -27,5 +27,7 @@
         public PokemonHeight PokemonHeight => _pokemonHeight;
         public PokemonWeight PokemonWeight => _pokemonWeight;
         public PokemonCounterFavorite PokemonCounterFavorite => _pokemonCounterFavorite;
+
+        public void IncrementFavoriteCounter() => _pokemonCounterFavorite = new PokemonCounterFavorite(_pokemonCounterFavorite.Value + 1);
     }
 }

@@ -8,6 +8,7 @@ public static class DomainDependencyInjection
     public static IServiceCollection AddPokemonDomain(this IServiceCollection services)
     {
         services.AddTransient<PokemonFinder>();
+        services.AddTransient<PokemonSaver>();
 
         return services;
     }
