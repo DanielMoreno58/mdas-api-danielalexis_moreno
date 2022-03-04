@@ -50,8 +50,8 @@ namespace Shared.Events.Infraestructure
                 _channel.QueueDeclare(queue, true, false, false, null);
                 _channel.QueueBind(queue, exchangeName, domainEvent.Type, null);
                 IBasicProperties properties = _channel.CreateBasicProperties();
-                properties.Type = domainEvent.Type;
-                byte[] output = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(domainEvent.Type));
+                properties.Type = domainEvent.Type;                
+                byte[] output = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(domainEvent));
                 _channel.BasicPublish(exchangeName, domainEvent.Type, properties, output);
             });
         }

@@ -12,10 +12,13 @@ namespace Users.User.Application
 
         public readonly UserFinder _userFinder;
 
-        private RabbitMq _rabbitMq;
+        private IEventPublisher _rabbitMq;
 
-        public AddPokemonFavoriteUseCase(UserAddPokemonFavorite userAddPokemonFavorite, AddPokemonFavoritePublisher addPokemonFavoritePublisher, 
-        UserFinder userFinder, RabbitMq rabbitMq)
+        public AddPokemonFavoriteUseCase(
+            UserAddPokemonFavorite userAddPokemonFavorite, 
+            AddPokemonFavoritePublisher addPokemonFavoritePublisher, 
+            UserFinder userFinder, IEventPublisher rabbitMq
+        )
         {
             _userAddPokemonFavorite = userAddPokemonFavorite;
             _addPokemonFavoritePublisher = addPokemonFavoritePublisher;
